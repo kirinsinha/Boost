@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0273BD271EB6789F006673DF /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0273BD261EB6789F006673DF /* StartViewController.swift */; };
 		02F7F97E1EA5900A00BC82FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7F97D1EA5900A00BC82FA /* AppDelegate.swift */; };
 		02F7F9801EA5900A00BC82FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7F97F1EA5900A00BC82FA /* ViewController.swift */; };
 		02F7F9831EA5900A00BC82FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F7F9811EA5900A00BC82FA /* Main.storyboard */; };
@@ -14,6 +15,21 @@
 		02F7F9881EA5900A00BC82FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02F7F9861EA5900A00BC82FA /* LaunchScreen.storyboard */; };
 		02F7F9931EA5900A00BC82FA /* LiveStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7F9921EA5900A00BC82FA /* LiveStreamTests.swift */; };
 		02F7F99E1EA5900A00BC82FA /* LiveStreamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7F99D1EA5900A00BC82FA /* LiveStreamUITests.swift */; };
+		02F7F9B11EA590BB00BC82FA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9B01EA590BB00BC82FA /* libz.tbd */; };
+		02F7F9B31EA590C900BC82FA /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9B21EA590C900BC82FA /* libc++.tbd */; };
+		02F7F9B51EA590D300BC82FA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9B41EA590D300BC82FA /* AudioToolbox.framework */; };
+		02F7F9B71EA590DB00BC82FA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9B61EA590DB00BC82FA /* AVFoundation.framework */; };
+		02F7F9B91EA590E600BC82FA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9B81EA590E600BC82FA /* CoreGraphics.framework */; };
+		02F7F9BB1EA590EE00BC82FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9BA1EA590EE00BC82FA /* CoreLocation.framework */; };
+		02F7F9BD1EA590F600BC82FA /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9BC1EA590F600BC82FA /* CoreMedia.framework */; };
+		02F7F9BF1EA590FE00BC82FA /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9BE1EA590FE00BC82FA /* CoreVideo.framework */; };
+		02F7F9C11EA5910600BC82FA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9C01EA5910600BC82FA /* Foundation.framework */; };
+		02F7F9C31EA5911100BC82FA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9C21EA5911100BC82FA /* QuartzCore.framework */; };
+		02F7F9C51EA5911A00BC82FA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9C41EA5911A00BC82FA /* SystemConfiguration.framework */; };
+		02F7F9C71EA5912300BC82FA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9C61EA5912300BC82FA /* UIKit.framework */; };
+		02F7F9C91EA5912B00BC82FA /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9C81EA5912B00BC82FA /* VideoToolbox.framework */; };
+		02F7F9D41EA5919600BC82FA /* libbambuser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9D21EA5919600BC82FA /* libbambuser.a */; };
+		02F7F9D51EA5919600BC82FA /* libbambuserplayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F7F9D31EA5919600BC82FA /* libbambuserplayer.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0273BD261EB6789F006673DF /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		0273BD281EB686E2006673DF /* Livestream-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Livestream-Bridging-Header.h"; sourceTree = "<group>"; };
 		02F7F97A1EA5900A00BC82FA /* LiveStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F7F97D1EA5900A00BC82FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02F7F97F1EA5900A00BC82FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +65,26 @@
 		02F7F9991EA5900A00BC82FA /* LiveStreamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveStreamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F7F99D1EA5900A00BC82FA /* LiveStreamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamUITests.swift; sourceTree = "<group>"; };
 		02F7F99F1EA5900A00BC82FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02F7F9B01EA590BB00BC82FA /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		02F7F9B21EA590C900BC82FA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		02F7F9B41EA590D300BC82FA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		02F7F9B61EA590DB00BC82FA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		02F7F9B81EA590E600BC82FA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		02F7F9BA1EA590EE00BC82FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		02F7F9BC1EA590F600BC82FA /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		02F7F9BE1EA590FE00BC82FA /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		02F7F9C01EA5910600BC82FA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		02F7F9C21EA5911100BC82FA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		02F7F9C41EA5911A00BC82FA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		02F7F9C61EA5912300BC82FA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		02F7F9C81EA5912B00BC82FA /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		02F7F9CC1EA5919600BC82FA /* BambuserConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BambuserConstants.h; sourceTree = "<group>"; };
+		02F7F9CD1EA5919600BC82FA /* BambuserViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BambuserViewDelegate.h; sourceTree = "<group>"; };
+		02F7F9CE1EA5919600BC82FA /* libbambuser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libbambuser.h; sourceTree = "<group>"; };
+		02F7F9CF1EA5919600BC82FA /* libbambuserplayer-constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "libbambuserplayer-constants.h"; sourceTree = "<group>"; };
+		02F7F9D01EA5919600BC82FA /* libbambuserplayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libbambuserplayer.h; sourceTree = "<group>"; };
+		02F7F9D21EA5919600BC82FA /* libbambuser.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbambuser.a; sourceTree = "<group>"; };
+		02F7F9D31EA5919600BC82FA /* libbambuserplayer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbambuserplayer.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +92,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02F7F9C91EA5912B00BC82FA /* VideoToolbox.framework in Frameworks */,
+				02F7F9C71EA5912300BC82FA /* UIKit.framework in Frameworks */,
+				02F7F9D51EA5919600BC82FA /* libbambuserplayer.a in Frameworks */,
+				02F7F9C51EA5911A00BC82FA /* SystemConfiguration.framework in Frameworks */,
+				02F7F9C31EA5911100BC82FA /* QuartzCore.framework in Frameworks */,
+				02F7F9C11EA5910600BC82FA /* Foundation.framework in Frameworks */,
+				02F7F9BF1EA590FE00BC82FA /* CoreVideo.framework in Frameworks */,
+				02F7F9BD1EA590F600BC82FA /* CoreMedia.framework in Frameworks */,
+				02F7F9BB1EA590EE00BC82FA /* CoreLocation.framework in Frameworks */,
+				02F7F9B91EA590E600BC82FA /* CoreGraphics.framework in Frameworks */,
+				02F7F9B71EA590DB00BC82FA /* AVFoundation.framework in Frameworks */,
+				02F7F9B51EA590D300BC82FA /* AudioToolbox.framework in Frameworks */,
+				02F7F9B31EA590C900BC82FA /* libc++.tbd in Frameworks */,
+				02F7F9D41EA5919600BC82FA /* libbambuser.a in Frameworks */,
+				02F7F9B11EA590BB00BC82FA /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +134,7 @@
 				02F7F9911EA5900A00BC82FA /* LiveStreamTests */,
 				02F7F99C1EA5900A00BC82FA /* LiveStreamUITests */,
 				02F7F97B1EA5900A00BC82FA /* Products */,
+				02F7F9AF1EA590BB00BC82FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +154,8 @@
 				02F7F97D1EA5900A00BC82FA /* AppDelegate.swift */,
 				02F7F97F1EA5900A00BC82FA /* ViewController.swift */,
 				02F7F9811EA5900A00BC82FA /* Main.storyboard */,
+				0273BD281EB686E2006673DF /* Livestream-Bridging-Header.h */,
+				0273BD261EB6789F006673DF /* StartViewController.swift */,
 				02F7F9841EA5900A00BC82FA /* Assets.xcassets */,
 				02F7F9861EA5900A00BC82FA /* LaunchScreen.storyboard */,
 				02F7F9891EA5900A00BC82FA /* Info.plist */,
@@ -123,6 +179,58 @@
 				02F7F99F1EA5900A00BC82FA /* Info.plist */,
 			);
 			path = LiveStreamUITests;
+			sourceTree = "<group>";
+		};
+		02F7F9AF1EA590BB00BC82FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02F7F9CA1EA5919600BC82FA /* Streaming Library */,
+				02F7F9C81EA5912B00BC82FA /* VideoToolbox.framework */,
+				02F7F9C61EA5912300BC82FA /* UIKit.framework */,
+				02F7F9C41EA5911A00BC82FA /* SystemConfiguration.framework */,
+				02F7F9C21EA5911100BC82FA /* QuartzCore.framework */,
+				02F7F9C01EA5910600BC82FA /* Foundation.framework */,
+				02F7F9BE1EA590FE00BC82FA /* CoreVideo.framework */,
+				02F7F9BC1EA590F600BC82FA /* CoreMedia.framework */,
+				02F7F9BA1EA590EE00BC82FA /* CoreLocation.framework */,
+				02F7F9B81EA590E600BC82FA /* CoreGraphics.framework */,
+				02F7F9B61EA590DB00BC82FA /* AVFoundation.framework */,
+				02F7F9B41EA590D300BC82FA /* AudioToolbox.framework */,
+				02F7F9B21EA590C900BC82FA /* libc++.tbd */,
+				02F7F9B01EA590BB00BC82FA /* libz.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		02F7F9CA1EA5919600BC82FA /* Streaming Library */ = {
+			isa = PBXGroup;
+			children = (
+				02F7F9CB1EA5919600BC82FA /* include */,
+				02F7F9D11EA5919600BC82FA /* lib */,
+			);
+			name = "Streaming Library";
+			path = prebuilt;
+			sourceTree = "<group>";
+		};
+		02F7F9CB1EA5919600BC82FA /* include */ = {
+			isa = PBXGroup;
+			children = (
+				02F7F9CC1EA5919600BC82FA /* BambuserConstants.h */,
+				02F7F9CD1EA5919600BC82FA /* BambuserViewDelegate.h */,
+				02F7F9CE1EA5919600BC82FA /* libbambuser.h */,
+				02F7F9CF1EA5919600BC82FA /* libbambuserplayer-constants.h */,
+				02F7F9D01EA5919600BC82FA /* libbambuserplayer.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		02F7F9D11EA5919600BC82FA /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				02F7F9D21EA5919600BC82FA /* libbambuser.a */,
+				02F7F9D31EA5919600BC82FA /* libbambuserplayer.a */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +302,7 @@
 					02F7F9791EA5900A00BC82FA = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 7DAF6E776V;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					02F7F98D1EA5900A00BC82FA = {
@@ -263,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02F7F9801EA5900A00BC82FA /* ViewController.swift in Sources */,
+				0273BD271EB6789F006673DF /* StartViewController.swift in Sources */,
 				02F7F97E1EA5900A00BC82FA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,11 +525,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 7DAF6E776V;
 				INFOPLIST_FILE = LiveStream/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/prebuilt/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Alec.LiveStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LiveStream/LiveStream-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -428,11 +545,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 7DAF6E776V;
 				INFOPLIST_FILE = LiveStream/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/prebuilt/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Alec.LiveStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LiveStream/LiveStream-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -514,6 +637,7 @@
 				02F7F9A41EA5900A00BC82FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02F7F9A51EA5900A00BC82FA /* Build configuration list for PBXNativeTarget "LiveStreamTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +646,7 @@
 				02F7F9A71EA5900A00BC82FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02F7F9A81EA5900A00BC82FA /* Build configuration list for PBXNativeTarget "LiveStreamUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +655,7 @@
 				02F7F9AA1EA5900A00BC82FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
