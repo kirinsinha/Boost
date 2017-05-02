@@ -7,4 +7,5 @@
 //
 
 #import "libbambuser.h"
+#import "SWRevealViewController.h"
 

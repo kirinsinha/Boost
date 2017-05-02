@@ -10,12 +10,25 @@ import UIKit
 
 class WatchViewController: UIViewController {
 
+    
     override func viewDidLoad() {
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+        //to interact with side view controller
 
+        
+        
+        let menu = UIButton(frame: CGRect(x: 20, y: 35, width: 25, height: 25))
+        //menu.setTitle("HI", for: .normal)
+        //menu.backgroundColor = UIColor.red
+        //menu.setTitleColor(UIColor.blue, for: .normal)
+        menu.setImage(#imageLiteral(resourceName: "menu"), for: UIControlState.normal)
+        
+        menu.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        self.view.addSubview(menu)
+
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
