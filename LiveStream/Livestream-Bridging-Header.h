@@ -8,4 +8,5 @@
 
 #import "libbambuser.h"
 #import "SWRevealViewController.h"
+#import "libbambuserplayer.h"
 
