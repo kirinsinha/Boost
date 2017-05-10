@@ -10,6 +10,7 @@
 
 import Foundation
 import FirebaseDatabase
+import Firebase
 
 class Video {
     
