@@ -38,6 +38,7 @@
 		BE112E451EB6A1D800861BAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */; };
 		BE112E461EB6A1D800861BAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */; };
 		BE2569551EC2C0F400A05C17 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2569541EC2C0F400A05C17 /* PlayViewController.swift */; };
+		BE2569571EC3D17D00A05C17 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2569561EC3D17D00A05C17 /* Video.swift */; };
 		BE6653AC1EB6AC7E00C78E0C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6653AB1EB6AC7E00C78E0C /* LoginViewController.swift */; };
 		BE6653AE1EB6AD6900C78E0C /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6653AD1EB6AD6900C78E0C /* ForgotPasswordViewController.swift */; };
 		BE6653B21EB6CE4500C78E0C /* MyriadPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BE6653B11EB6CE4500C78E0C /* MyriadPro-Semibold.otf */; };
@@ -110,6 +111,7 @@
 		BE112E411EB69FC000861BAE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BE2569541EC2C0F400A05C17 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
+		BE2569561EC3D17D00A05C17 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		BE6653AB1EB6AC7E00C78E0C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BE6653AD1EB6AD6900C78E0C /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		BE6653B11EB6CE4500C78E0C /* MyriadPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Semibold.otf"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				BE6653C41EB7D9C300C78E0C /* AccountViewController.swift */,
 				BE2569541EC2C0F400A05C17 /* PlayViewController.swift */,
 				BE6653C01EB77C7A00C78E0C /* ProfileCell.swift */,
+				BE2569561EC3D17D00A05C17 /* Video.swift */,
 				BE6653C21EB7A76300C78E0C /* LogoutTableViewCell.swift */,
 				BE6653B51EB6EC0200C78E0C /* MenuTableViewController.swift */,
 				BE6653B71EB6EC4B00C78E0C /* SWRevealViewController */,
@@ -607,6 +610,7 @@
 				BE2569551EC2C0F400A05C17 /* PlayViewController.swift in Sources */,
 				BE6653C51EB7D9C300C78E0C /* AccountViewController.swift in Sources */,
 				BE6653C31EB7A76300C78E0C /* LogoutTableViewCell.swift in Sources */,
+				BE2569571EC3D17D00A05C17 /* Video.swift in Sources */,
 				0273BD271EB6789F006673DF /* StartViewController.swift in Sources */,
 				BE6653AE1EB6AD6900C78E0C /* ForgotPasswordViewController.swift in Sources */,
 				BE6653B61EB6EC0200C78E0C /* MenuTableViewController.swift in Sources */,

@@ -16,12 +16,13 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class RegisterViewController: UIViewController, UITextFieldDelegate {
+class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var profilePic: UIImageView!
     
     //register for an account using your email and firebase
     @IBAction func registerAccount(_ sender: UIButton) {
@@ -54,6 +55,49 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
 
     }
+    
+    @IBAction func profPic(_ sender: UIButton) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let photo = UIImagePickerController()
+            photo.delegate = self
+            photo.sourceType = UIImagePickerControllerSourceType.camera
+            photo.cameraCaptureMode = .photo
+            photo.allowsEditing = false
+            photo.modalPresentationStyle = .fullScreen
+            self.present(photo, animated: true)
+        } else {
+            print("issue")
+        }
+        
+        
+    }
+    
+    @IBAction func choosePhoto(_ sender: UIButton) {
+        let photoLib = UIImagePickerController()
+        photoLib.delegate = self
+        photoLib.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        photoLib.allowsEditing = false
+        photoLib.modalPresentationStyle = .popover
+        self.present(photoLib, animated: true)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            profilePic.contentMode = .scaleAspectFit
+            profilePic.image = image
+        }
+        else{
+            print("problems")
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     func dismissKeyboard() {
         view.endEditing(true)
