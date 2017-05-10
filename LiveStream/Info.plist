@@ -4,11 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string></string>
-		<string>MyriadPro-Semibold.otf</string>
-	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -29,6 +24,11 @@
 	<string>I need camera</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>I need microphone</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string></string>
+		<string>MyriadPro-Semibold.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

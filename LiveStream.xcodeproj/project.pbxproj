@@ -387,7 +387,7 @@
 				TargetAttributes = {
 					02F7F9791EA5900A00BC82FA = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = W35MS6V79Y;
+						DevelopmentTeam = DM3M489WTV;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -762,9 +762,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B801C5F33D5FA6736B0BA26 /* Pods-LiveStream.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = W35MS6V79Y;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = DM3M489WTV;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LiveStream/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
@@ -786,9 +789,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E65D3F5C63D46AA9C682717C /* Pods-LiveStream.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = W35MS6V79Y;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = DM3M489WTV;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LiveStream/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
