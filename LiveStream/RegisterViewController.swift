@@ -49,11 +49,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
                 
                 self.present(alertController, animated: true, completion: nil)
             }
-            
         }
-        
-        
-
     }
     
     @IBAction func profPic(_ sender: UIButton) {
@@ -69,7 +65,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         } else {
             print("issue")
         }
-        
         
     }
     

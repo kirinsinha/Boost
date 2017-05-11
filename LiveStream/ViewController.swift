@@ -7,8 +7,17 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import Firebase
 
 class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegate {
+    
+    // Firebase
+    
+    var user: FIRUser?
+    var ref: FIRDatabaseReference?
+    
     
     @IBOutlet weak var flashLabel: UILabel!
     @IBOutlet weak var liveLabel: UILabel!
@@ -72,8 +81,13 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
         super.init(coder: aDecoder)
         bambuserView.delegate = self;
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        user = FIRAuth.auth()?.currentUser
+        ref = FIRDatabase.database().reference()
         
         progress.transform = progress.transform.scaledBy(x: 1, y: 2)
         // Do any additional setup after loading the view, typically from a nib.
@@ -107,11 +121,6 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
         menu.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.view.addSubview(menu)
         
-        
-        
-        
-        
-        
     }
     
     override func viewWillLayoutSubviews() {
@@ -128,6 +137,7 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
     
     func broadcast() {
         NSLog("Starting broadcast")
+        
         //broadcastButton.setTitle("Connecting", for: UIControlState.normal)
         broadcastButton.setImage(#imageLiteral(resourceName: "flash_red"), for: UIControlState.normal)
         broadcastButton.removeTarget(nil, action: nil, for: UIControlEvents.touchUpInside)
@@ -137,6 +147,9 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
     
     func broadcastStarted() {
         NSLog("Received broadcastStarted signal")
+        
+        ref?.setValue("Test")
+        
         //broadcastButton.setTitle("Stop", for: UIControlState.normal)
         broadcastButton.setImage(#imageLiteral(resourceName: "flash_red"), for: UIControlState.normal)
         liveLabel.text = "Live Now"
