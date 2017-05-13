@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import Firebase
+import AVFoundation
 
 class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegate {
     
@@ -31,6 +32,8 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
     
     var bambuserView : BambuserView
     var broadcastButton : UIButton
+    var switchFlashButton: UIButton
+    var changeCameraButton: UIButton
     var titleSet = false
     var goalVal = false
     var goalNum = 100.0
@@ -71,6 +74,8 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
     
     
     
+    
+    
     required init?(coder aDecoder: NSCoder) {
         bambuserView = BambuserView(preset: kSessionPresetAuto)
         //bambuserView.applicationId = "tjcjYSpdtmV7gUK9cVUycg"
@@ -78,6 +83,8 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
         //broadcastButton = UIButton(type: UIButtonType.system)
         
         broadcastButton = UIButton(frame: CGRect(x: 300, y: 500, width: 65, height: 65))
+        switchFlashButton = UIButton(frame: CGRect(x: 300, y: 500, width: 65, height: 65))
+        changeCameraButton = UIButton(frame: CGRect(x: 300, y: 500, width: 65, height: 65))
         super.init(coder: aDecoder)
         bambuserView.delegate = self;
     }
@@ -98,6 +105,10 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
         //broadcastButton.setTitle("Broadcast", for: UIControlState.normal)
         broadcastButton.setImage(#imageLiteral(resourceName: "flash_white"), for: UIControlState.normal)
         self.view.addSubview(broadcastButton)
+        switchFlashButton.setImage(#imageLiteral(resourceName: "flash_icon"), for: UIControlState.normal)
+        self.view.addSubview(switchFlashButton)
+        changeCameraButton.setImage(#imageLiteral(resourceName: "switch"), for: UIControlState.normal)
+        self.view.addSubview(changeCameraButton)
         
         
         //progress.progress = fractionProgress
@@ -111,6 +122,10 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
 
     
         enterStream.addTarget(self, action: #selector(ViewController.submit), for: .touchUpInside)
+        
+        switchFlashButton.addTarget(self, action: #selector(ViewController.changeFlash), for: .touchUpInside)
+        
+        changeCameraButton.addTarget(self, action: #selector(ViewController.flipCamera), for: .touchUpInside)
         
 
         
@@ -128,11 +143,32 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
         statusBarOffset = CGFloat(self.topLayoutGuide.length)
         bambuserView.previewFrame = CGRect(x: 0.0, y: 0.0 + statusBarOffset, width: self.view.bounds.size.width, height: self.view.bounds.size.height - statusBarOffset)
         broadcastButton.frame = CGRect(x: 160, y: 515.0 + statusBarOffset, width: 65.0, height: 65.0);
+        switchFlashButton.frame = CGRect(x: 255, y: 532.0 + statusBarOffset, width: 25.0, height: 25.0);
+        changeCameraButton.frame = CGRect(x: 28, y: 532.0 + statusBarOffset, width: 25.0, height: 25.0);
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func changeFlash(_ sender: UIButton) {
+        if let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo), device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+                let torchOn = !device.isTorchActive
+                try device.setTorchModeOnWithLevel(1.0)
+                device.torchMode = torchOn ? .on : .off
+                device.unlockForConfiguration()
+            } catch {
+                print("error")
+            }
+        }
+    }
+    
+    func flipCamera(_ sender: UIButton) {
+
+        print("flip")
     }
     
     func broadcast() {

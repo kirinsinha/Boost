@@ -52,6 +52,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         }
     }
     
+    
+    
     @IBAction func profPic(_ sender: UIButton) {
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
