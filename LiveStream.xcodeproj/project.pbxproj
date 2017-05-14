@@ -39,6 +39,7 @@
 		BE112E461EB6A1D800861BAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */; };
 		BE1D8D8C1EC5109D00CF1EC1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1D8D8B1EC5109D00CF1EC1 /* StoreKit.framework */; };
 		BE1D8D8E1EC7EF4600CF1EC1 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1D8D8D1EC7EF4600CF1EC1 /* PopupViewController.swift */; };
+		BE1D8D941EC8D87900CF1EC1 /* SetPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1D8D931EC8D87800CF1EC1 /* SetPictureViewController.swift */; };
 		BE2569551EC2C0F400A05C17 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2569541EC2C0F400A05C17 /* PlayViewController.swift */; };
 		BE2569571EC3D17D00A05C17 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2569561EC3D17D00A05C17 /* Video.swift */; };
 		BE6653AC1EB6AC7E00C78E0C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6653AB1EB6AC7E00C78E0C /* LoginViewController.swift */; };
@@ -114,6 +115,7 @@
 		BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BE1D8D8B1EC5109D00CF1EC1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BE1D8D8D1EC7EF4600CF1EC1 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		BE1D8D931EC8D87800CF1EC1 /* SetPictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPictureViewController.swift; sourceTree = "<group>"; };
 		BE2569541EC2C0F400A05C17 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		BE2569561EC3D17D00A05C17 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		BE6653AB1EB6AC7E00C78E0C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */,
 				BE6653BC1EB6EE5300C78E0C /* WatchViewController.swift */,
 				BE6653C41EB7D9C300C78E0C /* AccountViewController.swift */,
+				BE1D8D931EC8D87800CF1EC1 /* SetPictureViewController.swift */,
 				BE2569541EC2C0F400A05C17 /* PlayViewController.swift */,
 				BE6653C01EB77C7A00C78E0C /* ProfileCell.swift */,
 				BE2569561EC3D17D00A05C17 /* Video.swift */,
@@ -617,6 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE1D8D941EC8D87900CF1EC1 /* SetPictureViewController.swift in Sources */,
 				02F7F9801EA5900A00BC82FA /* ViewController.swift in Sources */,
 				BE6653BD1EB6EE5300C78E0C /* WatchViewController.swift in Sources */,
 				BE2569551EC2C0F400A05C17 /* PlayViewController.swift in Sources */,

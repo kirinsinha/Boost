@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vaY-PX-wrl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cU9-vE-r2A">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -64,6 +64,85 @@
             </objects>
             <point key="canvasLocation" x="-1783.2" y="-896.40179910044981"/>
         </scene>
+        <!--Set Picture View Controller-->
+        <scene sceneID="8Wb-QL-hwc">
+            <objects>
+                <viewController storyboardIdentifier="picture" id="qjy-sc-VaO" customClass="SetPictureViewController" customModule="LiveStream" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="s0q-3z-oZ2"/>
+                        <viewControllerLayoutGuide type="bottom" id="HJ6-G9-9Af"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NWG-Et-Bh3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PG-sK-gak">
+                                <rect key="frame" x="38" y="142" width="299" height="280"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzw-Pe-0no">
+                                        <rect key="frame" x="0.0" y="208" width="299" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.38868245289999998" green="0.042595212960000003" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="17"/>
+                                        <state key="normal" title="SET PROFILE PICTURE">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="close:" destination="qjy-sc-VaO" eventType="touchUpInside" id="8aR-un-MCz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0I-9f-fQB">
+                                        <rect key="frame" x="143" y="64" width="141" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="17"/>
+                                        <state key="normal" title="Take a Photo">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="takePhoto:" destination="qjy-sc-VaO" eventType="touchUpInside" id="W5c-rC-Eit"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="ZiY-Vc-l0u">
+                                        <rect key="frame" x="38" y="64" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdG-jg-Ywd">
+                                        <rect key="frame" x="281" y="0.0" width="18" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="exit"/>
+                                        <connections>
+                                            <action selector="exit:" destination="qjy-sc-VaO" eventType="touchUpInside" id="5Ah-8D-TV4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n14-p0-Q9M">
+                                        <rect key="frame" x="143" y="122" width="141" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="17"/>
+                                        <state key="normal" title="Choose a Photo">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="choosePhoto:" destination="qjy-sc-VaO" eventType="touchUpInside" id="ra7-nJ-Jth"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="chooseButton" destination="n14-p0-Q9M" id="F4c-Q2-Led"/>
+                        <outlet property="enterButton" destination="yzw-Pe-0no" id="IdZ-3n-VjV"/>
+                        <outlet property="preview" destination="ZiY-Vc-l0u" id="yxu-8w-r8x"/>
+                        <outlet property="takeButton" destination="d0I-9f-fQB" id="ETU-qj-24i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4DL-kG-eXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3116" y="-104.7976011994003"/>
+        </scene>
         <!--Register View Controller-->
         <scene sceneID="t9p-Dr-juX">
             <objects>
@@ -81,14 +160,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="EMAIL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="raY-7p-5Nt">
-                                <rect key="frame" x="37" y="186" width="299" height="67"/>
+                                <rect key="frame" x="37" y="263" width="299" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="NAME" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xAs-do-Qci">
-                                <rect key="frame" x="37" y="118" width="299" height="47"/>
+                                <rect key="frame" x="37" y="195" width="299" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="17"/>
@@ -120,35 +199,31 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHi-Ul-xN2">
-                                <rect key="frame" x="37" y="279" width="299" height="45"/>
+                                <rect key="frame" x="37" y="356" width="299" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oga-cu-Ukp">
-                                <rect key="frame" x="152" y="332" width="69" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="flash_white"/>
-                                <connections>
-                                    <action selector="profPic:" destination="b8S-8v-HHr" eventType="touchUpInside" id="KRn-7P-cvy"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kke-b0-R8G">
-                                <rect key="frame" x="134" y="474" width="106" height="106"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Kke-b0-R8G">
+                                <rect key="frame" x="151" y="67" width="73" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mV6-Tt-tgd">
-                                <rect key="frame" x="134" y="409" width="106" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jk-pY-4Za">
+                                <rect key="frame" x="208" y="60" width="28" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <state key="normal" title="Choose a Photo">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" image="plus-lg"/>
                                 <connections>
-                                    <action selector="choosePhoto:" destination="b8S-8v-HHr" eventType="touchUpInside" id="63V-PZ-1hM"/>
+                                    <action selector="addPic:" destination="b8S-8v-HHr" eventType="touchUpInside" id="YwF-J4-hJO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PROFILE PICTURE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLz-aj-8Zf">
+                                <rect key="frame" x="132" y="149" width="111" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MyriadPro-Semibold" family="Myriad Pro" pointSize="13"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -157,6 +232,7 @@
                         <outlet property="nameText" destination="xAs-do-Qci" id="w2T-Gb-hp4"/>
                         <outlet property="nextButton" destination="Fu0-IY-OQ1" id="NVy-S8-IEa"/>
                         <outlet property="passwordText" destination="lHi-Ul-xN2" id="KQe-wm-cBE"/>
+                        <outlet property="pictureButton" destination="2jk-pY-4Za" id="fzj-qe-xsA"/>
                         <outlet property="profilePic" destination="Kke-b0-R8G" id="Dbv-z8-TMk"/>
                     </connections>
                 </viewController>
@@ -1016,20 +1092,21 @@
         <image name="boostaction" width="18" height="31"/>
         <image name="button" width="310" height="80"/>
         <image name="camera" width="52" height="39"/>
+        <image name="exit" width="128" height="128"/>
         <image name="eye" width="29" height="18"/>
         <image name="flash_icon" width="21" height="36"/>
-        <image name="flash_white" width="128" height="129"/>
         <image name="help" width="34" height="34"/>
         <image name="homepage" width="640" height="1136"/>
         <image name="homepageBright" width="640" height="1136"/>
         <image name="outline" width="310" height="80"/>
+        <image name="plus-lg" width="40" height="40"/>
         <image name="settings" width="36" height="37"/>
         <image name="videos" width="22" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vbN-UY-LxE"/>
         <segue reference="bv8-8Y-Qc7"/>
-        <segue reference="BN3-Vg-BN6"/>
+        <segue reference="AVH-Xe-O4l"/>
         <segue reference="Fet-u2-OGS"/>
     </inferredMetricsTieBreakers>
 </document>

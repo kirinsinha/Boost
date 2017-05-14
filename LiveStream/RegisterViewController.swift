@@ -16,8 +16,9 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SetPictureViewControllerDelegate {
     
+    @IBOutlet weak var pictureButton: UIButton!
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
@@ -52,48 +53,30 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         }
     }
     
-    
-    
-    @IBAction func profPic(_ sender: UIButton) {
+    @IBAction func addPic(_ sender: UIButton) {
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "picture") as! SetPictureViewController
+        popOverVC.delegate = self
         
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let photo = UIImagePickerController()
-            photo.delegate = self
-            photo.sourceType = UIImagePickerControllerSourceType.camera
-            photo.cameraCaptureMode = .photo
-            photo.allowsEditing = false
-            photo.modalPresentationStyle = .fullScreen
-            self.present(photo, animated: true)
-        } else {
-            print("issue")
-        }
+        self.addChildViewController(popOverVC)
+        
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
         
     }
     
-    @IBAction func choosePhoto(_ sender: UIButton) {
-        let photoLib = UIImagePickerController()
-        photoLib.delegate = self
-        photoLib.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        photoLib.allowsEditing = false
-        photoLib.modalPresentationStyle = .popover
-        self.present(photoLib, animated: true)
+    func acceptData(data: UIImage) {
+        profilePic.image = data
+        profilePic.alpha = 1.0
+        pictureButton.setImage(#imageLiteral(resourceName: "check"), for: .normal)
         
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            profilePic.contentMode = .scaleAspectFit
-            profilePic.image = image
-        }
-        else{
-            print("problems")
-        }
-        self.dismiss(animated: true, completion: nil)
-    }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
+    
+
+    
+
     
     
     func dismissKeyboard() {
@@ -129,6 +112,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         emailText.delegate = self
         nameText.delegate = self
         passwordText.delegate = self
+        
+
+        self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width / 2;
+        self.profilePic.clipsToBounds = true;
+        
+
+        self.profilePic.layer.borderWidth = 2.0;
+        self.profilePic.layer.borderColor = UIColor.black.cgColor;
 
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.dismissKeyboard))
