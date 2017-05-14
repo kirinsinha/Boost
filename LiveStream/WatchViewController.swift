@@ -18,6 +18,7 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var boostNumber: UILabel!
+    @IBOutlet weak var indicatorLabel: UILabel!
     
     @IBOutlet weak var streamLabel: UILabel!
     
@@ -55,6 +56,8 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     var gradient: CAGradientLayer!
     var gradValue = 5
     
+    let yellow = UIColor(red: 255.0/255.0, green: 200.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+    
     required init?(coder aDecoder: NSCoder) {
         bambuserPlayer = BambuserPlayer()
         playButton = UIButton(type: UIButtonType.system)
@@ -81,6 +84,14 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
             gradient.removeFromSuperlayer()
             createGradient()
         }
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.indicatorLabel.alpha = 1
+        })
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.indicatorLabel.alpha = 0
+        })
  
     }
     
@@ -88,7 +99,10 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
         gradient = CAGradientLayer()
         gradient.frame = progressBar.frame
         
-        gradient.colors = [UIColor.red.cgColor,UIColor.orange.cgColor, UIColor.yellow.cgColor]
+        
+        gradient.colors = [UIColor.red.cgColor,UIColor.orange.cgColor, yellow.cgColor]
+        
+        // 255,200,94
         gradient.locations = [0.0, 0.5, 1.0]
         
         
@@ -243,6 +257,8 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
 
             
         }
+        
+        indicatorLabel.backgroundColor = yellow
  
 
         
