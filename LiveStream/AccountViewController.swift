@@ -19,6 +19,7 @@ class AccountViewController: UIViewController{
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var boostNum: UILabel!
     @IBOutlet weak var numVideos: UILabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     
     @IBOutlet weak var getBoosts: UIButton!
@@ -31,6 +32,7 @@ class AccountViewController: UIViewController{
     
     var boosts = 0
     var addition = 0
+    var picture: UIImage?
     
     /*var list = [SKProduct]()
     var p = SKProduct()
@@ -55,13 +57,19 @@ class AccountViewController: UIViewController{
     
     @IBAction func getMore(_ sender: UIButton) {
         if getBoosts.frame == tenBoosts.frame {
-            tenBoosts.frame = CGRect(x:getBoosts.frame.origin.x, y: getBoosts.frame.origin.y + 50, width: 315, height: 50)
-            fiftyBoosts.frame = CGRect(x:getBoosts.frame.origin.x, y: getBoosts.frame.origin.y + 100, width: 315, height: 50)
-            hundredBoosts.frame = CGRect(x:getBoosts.frame.origin.x, y: getBoosts.frame.origin.y + 150, width: 315, height: 50)
+            tenBoosts.frame = CGRect(x:getBoosts.frame.origin.x - 45 , y: getBoosts.frame.origin.y + 50, width: 315, height: 50)
+            fiftyBoosts.frame = CGRect(x:getBoosts.frame.origin.x - 45, y: getBoosts.frame.origin.y + 100, width: 315, height: 50)
+            hundredBoosts.frame = CGRect(x:getBoosts.frame.origin.x - 45, y: getBoosts.frame.origin.y + 150, width: 315, height: 50)
+            tenBoosts.alpha = 1.0
+            fiftyBoosts.alpha = 1.0
+            hundredBoosts.alpha = 1.0
         } else {
             tenBoosts.frame = getBoosts.frame
             fiftyBoosts.frame = getBoosts.frame
             hundredBoosts.frame = getBoosts.frame
+            tenBoosts.alpha = 0.0
+            fiftyBoosts.alpha = 0.0
+            hundredBoosts.alpha = 0.0
         }
         
         
@@ -107,6 +115,10 @@ class AccountViewController: UIViewController{
     override func viewDidLoad() {
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         super.viewDidLoad()
+        tenBoosts.alpha = 0.0
+        fiftyBoosts.alpha = 0.0
+        hundredBoosts.alpha = 0.0
+
         
         //to interact with side view controller
         
@@ -120,12 +132,20 @@ class AccountViewController: UIViewController{
         //productIDs.append("com.Kirin.LiveStream.50Boosts")
         //productIDs.append("com.Kirin.LiveStream.100Boosts")
         
+        picture = #imageLiteral(resourceName: "avatar")
+        
         numVideos.text = "7"
         boostNum.text = "68"
         nameLabel.text = "Molly Bootman"
-        profilePic.image = #imageLiteral(resourceName: "avatar")
+        profilePic.image = picture
+        backgroundImage.image = picture
+        
+        self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width / 2;
+        self.profilePic.clipsToBounds = true;
         
         
+        self.profilePic.layer.borderWidth = 2.0;
+        self.profilePic.layer.borderColor = UIColor.white.cgColor;
         
         
         let menu = UIButton(frame: CGRect(x: 20, y: 35, width: 25, height: 25))
