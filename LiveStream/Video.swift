@@ -14,24 +14,68 @@ import Firebase
 
 class Video {
     
-    var ref: FIRDatabaseReference?
-    var title: String?
-    var user: FIRUser?
-    var irisurlid: String?
-    var videoID: String?
+    private var _videoRef: FIRDatabaseReference!
     
-    init (dbref: FIRDatabaseReference?, user: FIRUser?, streamTitle: String?) {
-        
-        self.ref = dbref!
-        self.user = user
-        self.title = streamTitle
-        self.videoID = ref?.child("Broadcasts").childByAutoId().key
-
-        }
+    private var _videoID: String!
+    private var _videoTitle: String!
+    private var _irisURL: String!
+    private var _username: String!
+    private var _userID: String!
+    private var _boostNum: Int!
     
-    func sendToFirebase(){
-        let JSONPackage: String = "Broadcasts/[\(String(describing: user?.email)), \(videoID)]"
-        ref?.setValue(JSONPackage)
-
+    //Getters
+    
+    var videoID: String {
+        return _videoID
     }
+    
+    var videoTitle: String {
+        return _videoTitle
+    }
+    
+    var irisURL: String {
+        return _irisURL
+    }
+    
+    var username: String {
+        return _username
+    }
+    
+    var userID: String {
+        return _userID
+    }
+    
+    var boostNum: Int {
+        return _boostNum
+    }
+    
+    //Initialization of a video
+    init(videoID: String, videoInfo: Dictionary<String, AnyObject>) {
+        self._videoID = videoID
+        
+        if let boosts = videoInfo["boostNum"] as? Int {
+            self._boostNum = boosts
+        }
+        
+        if let title = videoInfo["videoTitle"] as? String {
+            self._videoTitle = title
+        }
+        
+        if let user = videoInfo["creator"] as? String {
+            self._username = user
+        } else {
+            self._username = ""
+        }
+        
+        if let userId = videoInfo["userID"] as? String {
+            self._userID = userId
+        }
+        
+        if let url = videoInfo["url"] as? String {
+            self._irisURL = url
+        }
+        
+        self._videoRef = DataService.dataService.VIDEO_REF.child(self._videoID)
+    }
+    
 }

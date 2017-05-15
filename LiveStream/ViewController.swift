@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import Firebase
 import AVFoundation
+import Alamofire
 
 class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegate, PopupViewControllerDelegate {
     
@@ -287,14 +288,48 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
         broadcastButton.removeTarget(nil, action: nil, for: UIControlEvents.touchUpInside)
         broadcastButton.addTarget(bambuserView, action: #selector(bambuserView.stopBroadcasting), for: UIControlEvents.touchUpInside)
         
-        // making a video, getting an automatic unique 'child ID' and putting that as the customDad for the video. Then send the video data to firebase
         
-        let currentVideo = Video(dbref: ref, user: user, streamTitle: streamTitleText)
-        bambuserView.customData = currentVideo.videoID
         bambuserView.startBroadcasting()
-        currentVideo.sendToFirebase()
         
     }
+    
+    //called when server creates unique string. get metadata from the server based on 
+    //id and then save to database
+    
+    func broadcastIdReceived(_ broadcastId: String!) {
+        var videoInfo = requestMetadata(broadcastId: broadcastId)
+        videoInfo["videoTitle"] = streamTitleText as AnyObject
+        //we probably need to get current user as author instead of the IRIS author, but we'll see
+        DataService.dataService.createNewVideo(videoID: broadcastId, videoInfo: videoInfo)
+    }
+    
+    func requestMetadata(broadcastId: String!) -> Dictionary<String,AnyObject> {
+        
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization" :"Bearer d8vz5aqnewxk7i193gbze5dc3", //change api key here
+            "Accept" : "application/vnd.bambuser.v1+json"
+        ]
+        
+        //let url = "https://api.irisplatform.io/broadcasts/" + broadcastId
+        
+        var videoInfo = [:] as Dictionary<String, AnyObject>
+        
+        Alamofire.request("https://api.irisplatform.io/broadcasts/" + broadcastId, headers: headers).responseJSON { response in
+            debugPrint(response)
+            if let json = response.result.value as? [String: AnyObject] {
+                let author = json["author"]
+                let resourceURI = json["resourceUri"]
+                let id = json["id"]
+                if id as! String != broadcastId {print("strange times")}
+                videoInfo = ["creator": author!, "url": resourceURI!]
+            }
+            
+        }
+        
+        return videoInfo
+    }
+    
     
     func broadcastStarted() {
         NSLog("Received broadcastStarted signal")
