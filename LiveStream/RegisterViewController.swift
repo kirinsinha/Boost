@@ -16,6 +16,8 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
+
+
 class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SetPictureViewControllerDelegate {
     
     @IBOutlet weak var pictureButton: UIButton!
@@ -24,6 +26,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var profilePic: UIImageView!
+    
+    //var delegate : RegisterViewControllerDelegate?
     
     //register for an account using your email and firebase
     @IBAction func registerAccount(_ sender: UIButton) {
@@ -40,6 +44,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
                 
                 
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "start")
+                
+                
                 self.present(vc!, animated: true, completion: nil)
                 
             } else {
@@ -129,6 +135,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
+
+    
+
+    
     
     
 }

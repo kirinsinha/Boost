@@ -37,6 +37,9 @@
 		BE112E441EB6A1D800861BAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */; };
 		BE112E451EB6A1D800861BAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */; };
 		BE112E461EB6A1D800861BAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */; };
+		BE1307A21ECA1C2C004120E0 /* TestTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1307A11ECA1C2C004120E0 /* TestTopViewController.swift */; };
+		BE1307A41ECA1C35004120E0 /* TestBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1307A31ECA1C35004120E0 /* TestBottomViewController.swift */; };
+		BE1307A61ECA1C56004120E0 /* TestFinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1307A51ECA1C56004120E0 /* TestFinalViewController.swift */; };
 		BE1D8D8C1EC5109D00CF1EC1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1D8D8B1EC5109D00CF1EC1 /* StoreKit.framework */; };
 		BE1D8D8E1EC7EF4600CF1EC1 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1D8D8D1EC7EF4600CF1EC1 /* PopupViewController.swift */; };
 		BE1D8D941EC8D87900CF1EC1 /* SetPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1D8D931EC8D87800CF1EC1 /* SetPictureViewController.swift */; };
@@ -113,6 +116,9 @@
 		8E8A25571CDE249D831BE232 /* Pods_LiveStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE112E411EB69FC000861BAE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BE1307A11ECA1C2C004120E0 /* TestTopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTopViewController.swift; sourceTree = "<group>"; };
+		BE1307A31ECA1C35004120E0 /* TestBottomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBottomViewController.swift; sourceTree = "<group>"; };
+		BE1307A51ECA1C56004120E0 /* TestFinalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFinalViewController.swift; sourceTree = "<group>"; };
 		BE1D8D8B1EC5109D00CF1EC1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BE1D8D8D1EC7EF4600CF1EC1 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		BE1D8D931EC8D87800CF1EC1 /* SetPictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPictureViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +220,9 @@
 				BE6653BC1EB6EE5300C78E0C /* WatchViewController.swift */,
 				BE6653C41EB7D9C300C78E0C /* AccountViewController.swift */,
 				BE1D8D931EC8D87800CF1EC1 /* SetPictureViewController.swift */,
+				BE1307A11ECA1C2C004120E0 /* TestTopViewController.swift */,
+				BE1307A31ECA1C35004120E0 /* TestBottomViewController.swift */,
+				BE1307A51ECA1C56004120E0 /* TestFinalViewController.swift */,
 				BE2569541EC2C0F400A05C17 /* PlayViewController.swift */,
 				BE6653C01EB77C7A00C78E0C /* ProfileCell.swift */,
 				BE2569561EC3D17D00A05C17 /* Video.swift */,
@@ -621,6 +630,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE1D8D941EC8D87900CF1EC1 /* SetPictureViewController.swift in Sources */,
+				BE1307A41ECA1C35004120E0 /* TestBottomViewController.swift in Sources */,
 				02F7F9801EA5900A00BC82FA /* ViewController.swift in Sources */,
 				BE6653BD1EB6EE5300C78E0C /* WatchViewController.swift in Sources */,
 				BE2569551EC2C0F400A05C17 /* PlayViewController.swift in Sources */,
@@ -629,6 +639,7 @@
 				BE1D8D8E1EC7EF4600CF1EC1 /* PopupViewController.swift in Sources */,
 				BE2569571EC3D17D00A05C17 /* Video.swift in Sources */,
 				0273BD271EB6789F006673DF /* StartViewController.swift in Sources */,
+				BE1307A21ECA1C2C004120E0 /* TestTopViewController.swift in Sources */,
 				BE6653AE1EB6AD6900C78E0C /* ForgotPasswordViewController.swift in Sources */,
 				BE6653B61EB6EC0200C78E0C /* MenuTableViewController.swift in Sources */,
 				BE6653BA1EB6EC5F00C78E0C /* SWRevealViewController.m in Sources */,
@@ -636,6 +647,7 @@
 				BE6653AC1EB6AC7E00C78E0C /* LoginViewController.swift in Sources */,
 				BE112E421EB69FC000861BAE /* RegisterViewController.swift in Sources */,
 				BE6653C11EB77C7B00C78E0C /* ProfileCell.swift in Sources */,
+				BE1307A61ECA1C56004120E0 /* TestFinalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

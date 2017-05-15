@@ -14,12 +14,15 @@ import AVKit
 import AVFoundation
 import Firebase
 
+
+
 class WatchViewController: UIViewController, BambuserPlayerDelegate {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var boostNumber: UILabel!
     @IBOutlet weak var indicatorLabel: UILabel!
     
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var streamLabel: UILabel!
     
     @IBOutlet weak var viewerCount: UILabel!
@@ -45,6 +48,7 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     var avatars = [#imageLiteral(resourceName: "avatar"),#imageLiteral(resourceName: "avatar2"),#imageLiteral(resourceName: "avatar3")]
     var viewers = [563, 66, 228]
     var goalBoosts = [50,300,10]
+    var prevRegister = false
 
     
     var arrayLen = 1
@@ -55,6 +59,7 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     var rewindButton: UIButton
     var gradient: CAGradientLayer!
     var gradValue = 5
+    var first = true
     
     let yellow = UIColor(red: 255.0/255.0, green: 200.0/255.0, blue: 94.0/255.0, alpha: 1.0)
     
@@ -66,6 +71,20 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
         super.init(coder: aDecoder)
     }
     
+    
+    
+    
+    func removeInstruction(_ sender: UIButton) {
+        
+        if(first){
+            topView.removeFromSuperview()
+            first = false
+        }
+        
+    }
+    
+    
+
     
     func boostAction(_ sender: UIButton) {
         
@@ -177,6 +196,7 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     
     }
     
+
     
     
 
@@ -187,7 +207,10 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
  
         super.viewDidLoad()
         
+        //intro if register was first view controller: 
+
         
+        print(prevRegister)
         
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeUp.direction = .up
@@ -201,7 +224,14 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(boostAction))
         doubleTap.numberOfTapsRequired = 2
         self.view.addGestureRecognizer(doubleTap)
- 
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(removeInstruction))
+        tap.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tap)
+        
+        if(!prevRegister){
+            topView.removeFromSuperview()
+        }
         
         arrayLen = initBoosts.count
         boostNumber.text = String(initBoosts[index % arrayLen])
