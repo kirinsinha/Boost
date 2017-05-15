@@ -18,12 +18,20 @@ class Video {
     var title: String?
     var user: FIRUser?
     var irisurlid: String?
+    var videoID: String?
     
-    init (snapshot: FIRDataSnapshot) {
-        ref = snapshot.ref
+    init (dbref: FIRDatabaseReference?, user: FIRUser?, streamTitle: String?) {
         
-        let data = snapshot.value as! Dictionary<String, String>
-        title = data["title"]! as String
-    }
+        self.ref = dbref!
+        self.user = user
+        self.title = streamTitle
+        self.videoID = ref?.child("Broadcasts").childByAutoId().key
+
+        }
     
+    func sendToFirebase(){
+        let JSONPackage: String = "Broadcasts/[\(String(describing: user?.email)), \(videoID)]"
+        ref?.setValue(JSONPackage)
+
+    }
 }

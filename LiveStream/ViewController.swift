@@ -17,7 +17,8 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
     
     var user: FIRUser?
     var ref: FIRDatabaseReference?
-    
+    var databaseHandle: FIRDatabaseHandle!
+    var streamTitleText: String?
     
     @IBOutlet weak var flashLabel: UILabel!
     @IBOutlet weak var liveLabel: UILabel!
@@ -88,6 +89,7 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
         
         user = FIRAuth.auth()?.currentUser
         ref = FIRDatabase.database().reference()
+        startObservingDatabase()
         
         progress.transform = progress.transform.scaledBy(x: 1, y: 2)
         // Do any additional setup after loading the view, typically from a nib.
@@ -138,11 +140,20 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
     func broadcast() {
         NSLog("Starting broadcast")
         
+        
         //broadcastButton.setTitle("Connecting", for: UIControlState.normal)
+        
         broadcastButton.setImage(#imageLiteral(resourceName: "flash_red"), for: UIControlState.normal)
         broadcastButton.removeTarget(nil, action: nil, for: UIControlEvents.touchUpInside)
         broadcastButton.addTarget(bambuserView, action: #selector(bambuserView.stopBroadcasting), for: UIControlEvents.touchUpInside)
+        
+        // making a video, getting an automatic unique 'child ID' and putting that as the customDad for the video. Then send the video data to firebase
+        
+        let currentVideo = Video(dbref: ref, user: user, streamTitle: streamTitleText)
+        bambuserView.customData = currentVideo.videoID
         bambuserView.startBroadcasting()
+        currentVideo.sendToFirebase()
+        
     }
     
     func broadcastStarted() {
@@ -169,6 +180,11 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
     }
     
  
+    func startObservingDatabase () {
+        databaseHandle = ref?.childByAutoId().observe(.value, with: { (snapshot) in
+            
+        })
+    }
     
     func submit(){
         
@@ -187,7 +203,8 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
             } else{
             streamTitle.backgroundColor = UIColor.white
             streamTitle.setTitleColor(UIColor.black, for: UIControlState.normal)
-            streamTitle.setTitle("    " + textField.text!, for: UIControlState.normal)
+            streamTitleText = textField.text!
+            streamTitle.setTitle("    " + streamTitleText!, for: UIControlState.normal)
             }
             
 
