@@ -9,8 +9,16 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import StoreKit
 
-class AccountViewController: UIViewController {
+//, SKProductsRequestDelegate,SKPaymentTransactionObserver
+
+class AccountViewController: UIViewController{
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var boostNum: UILabel!
+    @IBOutlet weak var numVideos: UILabel!
     
     
     @IBOutlet weak var getBoosts: UIButton!
@@ -20,6 +28,29 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var fiftyBoosts: UIButton!
     
     @IBOutlet weak var hundredBoosts: UIButton!
+    
+    var boosts = 0
+    var addition = 0
+    
+    /*var list = [SKProduct]()
+    var p = SKProduct()
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        print("product request")
+        let myProduct = response.products
+        for product in myProduct{
+            print("product added")
+            print(product.productIdentifier)
+            print(product.localizedTitle)
+            print(product.localizedDescription)
+            print(product.price)
+            
+            list.append(product)
+        }
+        
+        
+    }
+ */
     
     
     @IBAction func getMore(_ sender: UIButton) {
@@ -38,14 +69,20 @@ class AccountViewController: UIViewController {
     
     @IBAction func addTen(_ sender: UIButton) {
         print("10")
+        addition = 10
+        showAlert(message: "Buying 10 boosts for $0.99.                                                                     [Environment: Sandbox]")
     }
     
     @IBAction func addFifty(_ sender: UIButton) {
         print("50")
+        addition = 50
+        showAlert(message: "Buying 50 boosts for $4.99.                                                                     [Environment: Sandbox]")
     }
     
     @IBAction func addHundred(_ sender: UIButton) {
         print("100")
+        addition = 100
+        showAlert(message: "Buying 100 boosts for $9.99.                                                                     [Environment: Sandbox]")
     }
     
     
@@ -79,6 +116,15 @@ class AccountViewController: UIViewController {
         fiftyBoosts.frame = initFrame
         hundredBoosts.frame = initFrame
         
+        //productIDs.append("com.Kirin.LiveStream.10Boosts")
+        //productIDs.append("com.Kirin.LiveStream.50Boosts")
+        //productIDs.append("com.Kirin.LiveStream.100Boosts")
+        
+        numVideos.text = "7"
+        boostNum.text = "68"
+        nameLabel.text = "Molly Bootman"
+        profilePic.image = #imageLiteral(resourceName: "avatar")
+        
         
         
         
@@ -95,6 +141,32 @@ class AccountViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func showAlert(message: String!) {
+        let alertController = UIAlertController(title: "Confirm Your In-App Purchase", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let buy = UIAlertAction(title: "Buy", style: .default, handler: { (action) -> Void in
+            self.showConfirmation(message: "Your purchase was successful.                [Environment: Sandbox]")
+            self.boosts = Int(self.boostNum.text!)!
+            self.boosts += self.addition
+            self.boostNum.text = String(self.boosts)
+            
+            
+        })
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        alertController.addAction(buy)
+        
+        present(alertController, animated: true)
+    }
+    
+    func showConfirmation(message: String!) {
+        let alertController = UIAlertController(title: "You are all set", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
+        present(alertController, animated: true)
     }
     
     

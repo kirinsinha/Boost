@@ -52,7 +52,7 @@ class MenuTableViewController: UITableViewController {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "profile", for: indexPath) as! ProfileCell
             cell.nameLabel.text = "Molly Bootman"
-            cell.boostNum.text = "2341"
+            cell.boostNum.text = "68"
             cell.videoNum.text = "7"
           return cell
         } else if(indexPath.row == 1){

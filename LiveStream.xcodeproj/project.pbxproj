@@ -37,6 +37,9 @@
 		BE112E441EB6A1D800861BAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */; };
 		BE112E451EB6A1D800861BAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */; };
 		BE112E461EB6A1D800861BAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */; };
+		BE1D8D8C1EC5109D00CF1EC1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1D8D8B1EC5109D00CF1EC1 /* StoreKit.framework */; };
+		BE1D8D8E1EC7EF4600CF1EC1 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1D8D8D1EC7EF4600CF1EC1 /* PopupViewController.swift */; };
+		BE1D8D941EC8D87900CF1EC1 /* SetPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1D8D931EC8D87800CF1EC1 /* SetPictureViewController.swift */; };
 		BE2569551EC2C0F400A05C17 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2569541EC2C0F400A05C17 /* PlayViewController.swift */; };
 		BE2569571EC3D17D00A05C17 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2569561EC3D17D00A05C17 /* Video.swift */; };
 		BE6653AC1EB6AC7E00C78E0C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6653AB1EB6AC7E00C78E0C /* LoginViewController.swift */; };
@@ -110,6 +113,9 @@
 		8E8A25571CDE249D831BE232 /* Pods_LiveStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE112E411EB69FC000861BAE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BE1D8D8B1EC5109D00CF1EC1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		BE1D8D8D1EC7EF4600CF1EC1 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		BE1D8D931EC8D87800CF1EC1 /* SetPictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPictureViewController.swift; sourceTree = "<group>"; };
 		BE2569541EC2C0F400A05C17 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		BE2569561EC3D17D00A05C17 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		BE6653AB1EB6AC7E00C78E0C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +153,7 @@
 				02F7F9B51EA590D300BC82FA /* AudioToolbox.framework in Frameworks */,
 				02F7F9B31EA590C900BC82FA /* libc++.tbd in Frameworks */,
 				02F7F9D41EA5919600BC82FA /* libbambuser.a in Frameworks */,
+				BE1D8D8C1EC5109D00CF1EC1 /* StoreKit.framework in Frameworks */,
 				02F7F9B11EA590BB00BC82FA /* libz.tbd in Frameworks */,
 				A9EA0E07FCB242F278B5D255 /* Pods_LiveStream.framework in Frameworks */,
 			);
@@ -202,9 +209,11 @@
 				BE6653AD1EB6AD6900C78E0C /* ForgotPasswordViewController.swift */,
 				0273BD281EB686E2006673DF /* Livestream-Bridging-Header.h */,
 				0273BD261EB6789F006673DF /* StartViewController.swift */,
+				BE1D8D8D1EC7EF4600CF1EC1 /* PopupViewController.swift */,
 				BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */,
 				BE6653BC1EB6EE5300C78E0C /* WatchViewController.swift */,
 				BE6653C41EB7D9C300C78E0C /* AccountViewController.swift */,
+				BE1D8D931EC8D87800CF1EC1 /* SetPictureViewController.swift */,
 				BE2569541EC2C0F400A05C17 /* PlayViewController.swift */,
 				BE6653C01EB77C7A00C78E0C /* ProfileCell.swift */,
 				BE2569561EC3D17D00A05C17 /* Video.swift */,
@@ -242,6 +251,7 @@
 		02F7F9AF1EA590BB00BC82FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE1D8D8B1EC5109D00CF1EC1 /* StoreKit.framework */,
 				02F7F9CA1EA5919600BC82FA /* Streaming Library */,
 				02F7F9C81EA5912B00BC82FA /* VideoToolbox.framework */,
 				02F7F9C61EA5912300BC82FA /* UIKit.framework */,
@@ -393,9 +403,14 @@
 				TargetAttributes = {
 					02F7F9791EA5900A00BC82FA = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 7DAF6E776V;
+						DevelopmentTeam = DM3M489WTV;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					02F7F98D1EA5900A00BC82FA = {
 						CreatedOnToolsVersion = 8.3.1;
@@ -605,11 +620,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE1D8D941EC8D87900CF1EC1 /* SetPictureViewController.swift in Sources */,
 				02F7F9801EA5900A00BC82FA /* ViewController.swift in Sources */,
 				BE6653BD1EB6EE5300C78E0C /* WatchViewController.swift in Sources */,
 				BE2569551EC2C0F400A05C17 /* PlayViewController.swift in Sources */,
 				BE6653C51EB7D9C300C78E0C /* AccountViewController.swift in Sources */,
 				BE6653C31EB7A76300C78E0C /* LogoutTableViewCell.swift in Sources */,
+				BE1D8D8E1EC7EF4600CF1EC1 /* PopupViewController.swift in Sources */,
 				BE2569571EC3D17D00A05C17 /* Video.swift in Sources */,
 				0273BD271EB6789F006673DF /* StartViewController.swift in Sources */,
 				BE6653AE1EB6AD6900C78E0C /* ForgotPasswordViewController.swift in Sources */,
@@ -774,7 +791,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7DAF6E776V;
+				DEVELOPMENT_TEAM = DM3M489WTV;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LiveStream/Info.plist;
@@ -801,7 +818,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7DAF6E776V;
+				DEVELOPMENT_TEAM = DM3M489WTV;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LiveStream/Info.plist;
