@@ -123,7 +123,7 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
         super.viewDidLoad()
         
         user = FIRAuth.auth()?.currentUser
-        ref = FIRDatabase.database().reference()
+        
         startObservingDatabase()
         
         //progress.transform = progress.transform.scaledBy(x: 1, y: 2)
@@ -297,13 +297,10 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
     //id and then save to database
     
     func broadcastIdReceived(_ broadcastId: String!) {
-        var videoInfo = requestMetadata(broadcastId: broadcastId)
-        videoInfo["videoTitle"] = streamTitleText as AnyObject
-        //we probably need to get current user as author instead of the IRIS author, but we'll see
-        DataService.dataService.createNewVideo(videoID: broadcastId, videoInfo: videoInfo)
+        requestVideoMetadataAndCreate(broadcastId: broadcastId)
     }
     
-    func requestMetadata(broadcastId: String!) -> Dictionary<String,AnyObject> {
+    func requestVideoMetadataAndCreate(broadcastId: String!) {
         
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
@@ -311,23 +308,33 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
             "Accept" : "application/vnd.bambuser.v1+json"
         ]
         
-        //let url = "https://api.irisplatform.io/broadcasts/" + broadcastId
-        
-        var videoInfo = [:] as Dictionary<String, AnyObject>
         
         Alamofire.request("https://api.irisplatform.io/broadcasts/" + broadcastId, headers: headers).responseJSON { response in
             debugPrint(response)
-            if let json = response.result.value as? [String: AnyObject] {
-                let author = json["author"]
-                let resourceURI = json["resourceUri"]
-                let id = json["id"]
-                if id as! String != broadcastId {print("strange times")}
-                videoInfo = ["creator": author!, "url": resourceURI!]
+            if let result = response.result.value {
+                let json = result as! NSDictionary
+                let id = json["id"]!
+                if id as? String != broadcastId {print("strange times")}
+                var videoInfo = [:] as Dictionary<String, Any>
+                videoInfo["url"] = json["resourceUri"]!
+                videoInfo["videoTitle"] = self.streamTitleText
+                videoInfo["boostNum"] = 0
+                videoInfo["boostGoal"] = self.goal
+                videoInfo["creatorId"] = self.user?.uid
+                videoInfo["creatorName"] = self.user?.displayName
+                videoInfo["liveStatus"] = true
+                DataService.dataService.createNewVideo(videoID: broadcastId, videoInfo: videoInfo)
+                
+                DataService.dataService.CURRENT_USER_REF.observeSingleEvent(of: .value, with: { snapshot in
+                
+                    let u = User(snap: snapshot, userId: (self.user?.uid)!)
+                    
+                    print(u.username)
+                    u.createDeleteVideo(videoId: broadcastId, create: true)
+                
+                })
             }
-            
         }
-        
-        return videoInfo
     }
     
     

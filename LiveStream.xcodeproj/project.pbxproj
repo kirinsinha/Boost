@@ -35,6 +35,7 @@
 		A9EA0E07FCB242F278B5D255 /* Pods_LiveStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E8A25571CDE249D831BE232 /* Pods_LiveStream.framework */; };
 		B26E9E731EC97823001BCE86 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E9E721EC97823001BCE86 /* Constants.swift */; };
 		B26E9E751EC978DE001BCE86 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E9E741EC978DE001BCE86 /* DataService.swift */; };
+		B2FDE7651ECA57150087441F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FDE7641ECA57150087441F /* User.swift */; };
 		BE112E421EB69FC000861BAE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE112E411EB69FC000861BAE /* RegisterViewController.swift */; };
 		BE112E441EB6A1D800861BAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */; };
 		BE112E451EB6A1D800861BAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */; };
@@ -115,6 +116,7 @@
 		8E8A25571CDE249D831BE232 /* Pods_LiveStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B26E9E721EC97823001BCE86 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B26E9E741EC978DE001BCE86 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		B2FDE7641ECA57150087441F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BE112E411EB69FC000861BAE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BE112E431EB6A1D800861BAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BE1D8D8B1EC5109D00CF1EC1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -221,6 +223,7 @@
 				BE2569541EC2C0F400A05C17 /* PlayViewController.swift */,
 				BE6653C01EB77C7A00C78E0C /* ProfileCell.swift */,
 				BE2569561EC3D17D00A05C17 /* Video.swift */,
+				B2FDE7641ECA57150087441F /* User.swift */,
 				BE6653C21EB7A76300C78E0C /* LogoutTableViewCell.swift */,
 				BE6653B51EB6EC0200C78E0C /* MenuTableViewController.swift */,
 				BE6653B71EB6EC4B00C78E0C /* SWRevealViewController */,
@@ -644,6 +647,7 @@
 				BE6653AC1EB6AC7E00C78E0C /* LoginViewController.swift in Sources */,
 				BE112E421EB69FC000861BAE /* RegisterViewController.swift in Sources */,
 				BE6653C11EB77C7B00C78E0C /* ProfileCell.swift in Sources */,
+				B2FDE7651ECA57150087441F /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

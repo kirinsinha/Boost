@@ -58,60 +58,204 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveStream/ViewController.swift"
-            timestampString = "516531722.224247"
+            timestampString = "516574074.482603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
-            landmarkName = "broadcastIdReceived(_:)"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
+            landmarkName = "requestVideoMetadataAndCreate(broadcastId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveStream/ViewController.swift"
-            timestampString = "516531841.641216"
+            timestampString = "516574851.553374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
-            landmarkName = "requestMetadata(broadcastId:)"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
+            landmarkName = "requestVideoMetadataAndCreate(broadcastId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveStream/ViewController.swift"
-            timestampString = "516532642.541799"
+            timestampString = "516603940.18813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
-            landmarkName = "requestMetadata(broadcastId:)"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
+            landmarkName = "requestVideoMetadataAndCreate(broadcastId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiveStream.ViewController.requestVideoMetadataAndCreate (broadcastId : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "LiveStream"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dhruvamin/Documents/projects/Boost/LiveStream/ViewController.swift"
+                  timestampString = "516574074.669079"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "326"
+                  endingLineNumber = "326"
+                  offsetFromSymbolStart = "864">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiveStream.ViewController.(requestVideoMetadataAndCreate (broadcastId : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "LiveStream"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dhruvamin/Documents/projects/Boost/LiveStream/ViewController.swift"
+                  timestampString = "516574074.67078"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "326"
+                  endingLineNumber = "326"
+                  offsetFromSymbolStart = "2708">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveStream/ViewController.swift"
+            timestampString = "516574074.482603"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
+            landmarkName = "requestVideoMetadataAndCreate(broadcastId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiveStream.ViewController.requestMetadata (broadcastId : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;) -&gt; Swift.Dictionary&lt;Swift.String, Any&gt;"
+                  moduleName = "LiveStream"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dhruvamin/Documents/projects/Boost/LiveStream/ViewController.swift"
+                  timestampString = "516573110.469469"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "320"
+                  endingLineNumber = "320"
+                  offsetFromSymbolStart = "520">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiveStream.ViewController.(requestMetadata (broadcastId : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;) -&gt; Swift.Dictionary&lt;Swift.String, Any&gt;).(closure #1)"
+                  moduleName = "LiveStream"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dhruvamin/Documents/projects/Boost/LiveStream/ViewController.swift"
+                  timestampString = "516573110.472619"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "318"
+                  endingLineNumber = "318"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveStream/User.swift"
+            timestampString = "516605586.332437"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "createDeleteVideo(videoId:create:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiveStream/ViewController.swift"
-            timestampString = "516532647.653881"
+            timestampString = "516615075.769622"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "330"
             endingLineNumber = "330"
-            landmarkName = "requestMetadata(broadcastId:)"
+            landmarkName = "requestVideoMetadataAndCreate(broadcastId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveStream/ViewController.swift"
+            timestampString = "516615075.769622"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
+            landmarkName = "requestVideoMetadataAndCreate(broadcastId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveStream/User.swift"
+            timestampString = "516605586.332437"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "init(snap:userId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiveStream/User.swift"
+            timestampString = "516606320.210212"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "createDeleteVideo(videoId:create:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

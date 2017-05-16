@@ -22,8 +22,24 @@ class Video {
     private var _username: String!
     private var _userID: String!
     private var _boostNum: Int!
+    private var _boostGoal: Int!
+    private var _curViewers: Int!
+    private var _totalViews: Int!
+    private var _liveStatus: Bool!
     
     //Getters
+
+    var liveStatus: Bool {
+        return _liveStatus
+    }
+    
+    var currentViewers: Int {
+        return _curViewers
+    }
+    
+    var totalViews: Int {
+        return _totalViews
+    }
     
     var videoID: String {
         return _videoID
@@ -49,25 +65,40 @@ class Video {
         return _boostNum
     }
     
+    var boostGoal: Int {
+        return _boostGoal
+    }
+    
     //Initialization of a video
     init(videoID: String, videoInfo: Dictionary<String, AnyObject>) {
         self._videoID = videoID
         
+        self._curViewers = 0
+        self._totalViews = 0
+        
+        if let status = videoInfo["liveStatus"] as? Bool {
+            self._liveStatus = status
+        }
+        
         if let boosts = videoInfo["boostNum"] as? Int {
             self._boostNum = boosts
+        }
+        
+        if let boostGoal = videoInfo["boostGoal"] as? Int {
+            self._boostGoal = boostGoal
         }
         
         if let title = videoInfo["videoTitle"] as? String {
             self._videoTitle = title
         }
         
-        if let user = videoInfo["creator"] as? String {
+        if let user = videoInfo["creatorName"] as? String {
             self._username = user
         } else {
             self._username = ""
         }
         
-        if let userId = videoInfo["userID"] as? String {
+        if let userId = videoInfo["creatorId"] as? String {
             self._userID = userId
         }
         
@@ -76,6 +107,32 @@ class Video {
         }
         
         self._videoRef = DataService.dataService.VIDEO_REF.child(self._videoID)
+    }
+    
+    //Setters and Updates
+    
+    func addBoost() {
+        self._boostNum = self._boostNum + 1
+        
+        self._videoRef.child("boostNum").setValue(self._boostNum)
+    }
+    
+    func addRemoveViewers(add: Bool) {
+        if add {
+            self._curViewers = self._curViewers + 1
+            self._totalViews = self._totalViews + 1
+        } else {
+            self._curViewers = self._curViewers - 1
+        }
+        
+        self._videoRef.child("currentViewers").setValue(self._curViewers)
+        self._videoRef.child("totalViews").setValue(self._totalViews)
+    }
+    
+    func flipLiveStatus() {
+        self._liveStatus = !self._liveStatus
+        
+        self._videoRef.child("liveStatus").setValue(self._liveStatus)
     }
     
 }

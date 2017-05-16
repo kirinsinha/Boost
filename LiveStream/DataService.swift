@@ -26,9 +26,9 @@ class DataService {
     }
     
     var CURRENT_USER_REF: FIRDatabaseReference {
-        let userID = UserDefaults.standard.value(forKey: "uid") as! String
+        let userID = FIRAuth.auth()?.currentUser?.uid
     
-        let currentUser = FIRDatabase.database().reference().child("users").child(userID)
+        let currentUser = FIRDatabase.database().reference().child("users").child(userID!)
     
         return currentUser
     }
@@ -37,13 +37,15 @@ class DataService {
         return _VIDEO_REF
     }
     
-    func createNewAccount(uid: String, user: Dictionary<String, String>) {
+    func createNewAccount(uid: String, user: Dictionary<String, Any>) {
         //saves a user to the database
         USER_REF.child(uid).setValue(user)
     }
     
-    func createNewVideo(videoID: String, videoInfo: Dictionary<String, AnyObject>) {
+    func createNewVideo(videoID: String, videoInfo: Dictionary<String, Any>) {
         VIDEO_REF.child(videoID).setValue(videoInfo)
     }
+    
+    
 
 }

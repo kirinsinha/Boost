@@ -36,7 +36,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
             
             if error == nil {
                 let userid = FIRAuth.auth()?.currentUser?.uid
-                let userinfo = ["email": self.emailText.text!, "name": self.nameText.text!]
+                let userinfo = ["email": self.emailText.text!, "userName": self.nameText.text!]
                 
                 DataService.dataService.createNewAccount(uid: userid!, user: userinfo)
                 
@@ -44,6 +44,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
 
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "start")
                 self.present(vc!, animated: true, completion: nil)
+                
+                
                 
             } else {
                 let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
