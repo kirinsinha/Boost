@@ -11,6 +11,7 @@ pod ‘Firebase’
 pod 'Firebase/Core'
 pod ‘Firebase/Auth’
 pod ‘Firebase/Database’
+pod ‘Firebase/Messaging’
 
   target 'LiveStreamTests' do
     inherit! :search_paths

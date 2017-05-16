@@ -74,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02715FBC1ECACE6200CBC183 /* LiveStream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LiveStream.entitlements; sourceTree = "<group>"; };
 		0273BD261EB6789F006673DF /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		0273BD281EB686E2006673DF /* Livestream-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Livestream-Bridging-Header.h"; sourceTree = "<group>"; };
 		02F7F97A1EA5900A00BC82FA /* LiveStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +210,7 @@
 		02F7F97C1EA5900A00BC82FA /* LiveStream */ = {
 			isa = PBXGroup;
 			children = (
+				02715FBC1ECACE6200CBC183 /* LiveStream.entitlements */,
 				02F7F97D1EA5900A00BC82FA /* AppDelegate.swift */,
 				02F7F97F1EA5900A00BC82FA /* ViewController.swift */,
 				02F7F9811EA5900A00BC82FA /* Main.storyboard */,
@@ -412,11 +414,14 @@
 				TargetAttributes = {
 					02F7F9791EA5900A00BC82FA = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 7DAF6E776V;
+						DevelopmentTeam = DM3M489WTV;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -802,8 +807,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = LiveStream/LiveStream.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7DAF6E776V;
+				DEVELOPMENT_TEAM = DM3M489WTV;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LiveStream/Info.plist;
@@ -814,7 +820,7 @@
 					"$(PROJECT_DIR)/prebuilt/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Alec.continuum;
+				PRODUCT_BUNDLE_IDENTIFIER = boost.LiveStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LiveStream/LiveStream-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -829,8 +835,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = LiveStream/LiveStream.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7DAF6E776V;
+				DEVELOPMENT_TEAM = DM3M489WTV;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LiveStream/Info.plist;
@@ -841,7 +848,7 @@
 					"$(PROJECT_DIR)/prebuilt/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Alec.continuum;
+				PRODUCT_BUNDLE_IDENTIFIER = boost.LiveStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LiveStream/LiveStream-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
