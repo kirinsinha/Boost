@@ -41,7 +41,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
             if error == nil {
                 print("Success")
 
-                
+                UserDefaults.standard.set(true, forKey: "firstUse")
                 
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "start")
                 

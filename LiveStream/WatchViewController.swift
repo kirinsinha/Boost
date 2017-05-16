@@ -59,7 +59,7 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     var rewindButton: UIButton
     var gradient: CAGradientLayer!
     var gradValue = 5
-    var first = true
+    var first : Bool?
     
     let yellow = UIColor(red: 255.0/255.0, green: 200.0/255.0, blue: 94.0/255.0, alpha: 1.0)
     
@@ -72,19 +72,17 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     }
     
     
-    
+
     
     func removeInstruction(_ sender: UIButton) {
         
-        if(first){
+        if first == true {
             topView.removeFromSuperview()
             first = false
         }
         
     }
     
-    
-
     
     func boostAction(_ sender: UIButton) {
         
@@ -208,7 +206,14 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
         super.viewDidLoad()
         
         //intro if register was first view controller: 
-
+        let isFirstTime = UserDefaults.standard.bool(forKey: "firstUse")
+        
+        if isFirstTime != true {
+            first = false
+        } else {
+            first = true
+            UserDefaults.standard.set(false, forKey: "firstUse")
+        }
         
         print(prevRegister)
         
@@ -248,7 +253,14 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
         bambuserPlayer.delegate = self
         bambuserPlayer.applicationId = "Do14yFBjvRaFc8ut0Ri6LA"
         bambuserPlayer.playVideo("https://cdn.bambuser.net/broadcasts/ec968ec1-2fd9-f8f3-4f0a-d8e19dccd739?da_signature_method=HMAC-SHA256&da_id=432cebc3-4fde-5cbb-e82f-88b013140ebe&da_timestamp=1456740399&da_static=1&da_ttl=0&da_signature=8e0f9b98397c53e58f9d06d362e1de3cb6b69494e5d0e441307dfc9f854a2479")
+        
+        // Adding identifier and removing user interaction
+        
+        bambuserPlayer.restorationIdentifier = "bambuserWatchView"
+        bambuserPlayer.isUserInteractionEnabled = false
+        
         self.view.addSubview(bambuserPlayer)
+        
         
         self.view.sendSubview(toBack: bambuserPlayer)
 

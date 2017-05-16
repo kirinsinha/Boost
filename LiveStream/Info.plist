@@ -22,10 +22,10 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>I need camera</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Please grant access to photo library</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>I need microphone</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please grant access to photo library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string></string>

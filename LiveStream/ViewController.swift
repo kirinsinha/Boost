@@ -198,7 +198,8 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
             progressBar.frame = CGRect(x: backgroundBar.frame.minX, y: backgroundBar.frame.maxY - height, width: backgroundBar.bounds.size.width, height: height)
             createGradient()
         }
-
+        
+        bambuserView.swapCamera()
         
     }
     
@@ -250,31 +251,9 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
     }
     
     func flipCamera(_ sender: UIButton) {
-
-        print("flip")
         
+        bambuserView.swapCamera()
         
-        let discovery = AVCaptureDeviceDiscoverySession.init(deviceTypes: [AVCaptureDeviceType.builtInWideAngleCamera], mediaType: AVMediaTypeVideo, position: AVCaptureDevicePosition.front)
-        
-        for device in (discovery?.devices)! {
-            print(device)
-            if device.position == .back {
-            print("here1")
-            }
-            else if device.position == .front {
-                print("here2")
-            }
-            
-            currentCaptureDevice = device
-        }
-        
-        do {
-            input = try AVCaptureDeviceInput(device: currentCaptureDevice)
-        }catch let error1 as NSError {
-            
-        }
-        
- 
     }
     
     func broadcast() {
@@ -289,17 +268,17 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
         
         // making a video, getting an automatic unique 'child ID' and putting that as the customDad for the video. Then send the video data to firebase
         
-        let currentVideo = Video(dbref: ref, user: user, streamTitle: streamTitleText)
-        bambuserView.customData = currentVideo.videoID
-        bambuserView.startBroadcasting()
-        currentVideo.sendToFirebase()
+        //let currentVideo = Video(dbref: ref, user: user, streamTitle: streamTitleText)
+        //bambuserView.customData = currentVideo.videoID
+        //bambuserView.startBroadcasting()
+        //currentVideo.sendToFirebase()
         
     }
     
     func broadcastStarted() {
         NSLog("Received broadcastStarted signal")
         
-        ref?.setValue("Test")
+        //ref?.setValue("Test")
         
         //broadcastButton.setTitle("Stop", for: UIControlState.normal)
         broadcastButton.setImage(#imageLiteral(resourceName: "flash_red"), for: UIControlState.normal)
