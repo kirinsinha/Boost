@@ -109,7 +109,7 @@ class Video {
         self._videoRef = DataService.dataService.VIDEO_REF.child(self._videoID)
     }
     
-    //Setters and Updates
+    //Actions
     
     func addBoost() {
         self._boostNum = self._boostNum + 1
@@ -133,6 +133,20 @@ class Video {
         self._liveStatus = !self._liveStatus
         
         self._videoRef.child("liveStatus").setValue(self._liveStatus)
+    }
+    
+    //Update funcs for housekeeping with client objs
+    
+    func setBoost(num: Int) {
+        _boostNum = num
+    }
+    
+    func setViewers(num: Int) {
+        _curViewers = num
+    }
+    
+    func setLiveStatus(status: Bool) {
+        _liveStatus = status
     }
     
 }

@@ -17,7 +17,8 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
     
     // Firebase
     
-    var user: FIRUser?
+    var user: FIRUser? //Auth obj
+    var u: User? //Database obj
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle!
     var streamTitleText: String?
@@ -122,9 +123,18 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        user = FIRAuth.auth()?.currentUser
+        self.user = FIRAuth.auth()?.currentUser
         
-        startObservingDatabase()
+        //set current user database object
+        
+        DataService.dataService.CURRENT_USER_REF.observeSingleEvent(of: .value, with: { snapshot in
+            
+            self.u = User(snap: snapshot, userId: (self.user?.uid)!)
+            
+            print(self.u?.username ?? "no current user set")
+            
+        })
+        
         
         //progress.transform = progress.transform.scaledBy(x: 1, y: 2)
         // Do any additional setup after loading the view, typically from a nib.
@@ -317,11 +327,11 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
                 if id as? String != broadcastId {print("strange times")}
                 var videoInfo = [:] as Dictionary<String, Any>
                 videoInfo["url"] = json["resourceUri"]!
-                videoInfo["videoTitle"] = self.streamTitleText
+                videoInfo["videoTitle"] = self.streamLabel.text
                 videoInfo["boostNum"] = 0
                 videoInfo["boostGoal"] = self.goal
-                videoInfo["creatorId"] = self.user?.uid
-                videoInfo["creatorName"] = self.user?.displayName
+                videoInfo["creatorId"] = self.u?.userId
+                videoInfo["creatorName"] = self.u?.username
                 videoInfo["liveStatus"] = true
                 DataService.dataService.createNewVideo(videoID: broadcastId, videoInfo: videoInfo)
                 
@@ -359,13 +369,6 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
         liveLabel.textColor = UIColor.green
         broadcastButton.removeTarget(nil, action: nil, for: UIControlEvents.touchUpInside)
         broadcastButton.addTarget(self, action: #selector(ViewController.broadcast), for: UIControlEvents.touchUpInside)
-    }
-    
- 
-    func startObservingDatabase () {
-        databaseHandle = ref?.childByAutoId().observe(.value, with: { (snapshot) in
-            
-        })
     }
     
 

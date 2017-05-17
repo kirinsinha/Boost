@@ -43,7 +43,7 @@ class DataService {
     }
     
     func createNewVideo(videoID: String, videoInfo: Dictionary<String, Any>) {
-        VIDEO_REF.child(videoID).setValue(videoInfo)
+        _VIDEO_REF.child(videoID).setValue(videoInfo)
     }
     
     

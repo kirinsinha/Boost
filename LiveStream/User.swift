@@ -101,7 +101,7 @@ class User {
     // add or remove a single boost on a video. Doesn't perform any checks yet against abuse
     func addUndoBoost(videoId: String, boost: Bool) {
         if boost {
-            self._boostedVideos[videoId] = self._boostedVideos[videoId]! + 1
+            self._boostedVideos[videoId] = (self._boostedVideos[videoId] ?? 0) + 1
             self._boostsLeft = self._boostsLeft - 1
         } else {
             self._boostedVideos[videoId] = self._boostedVideos[videoId]! - 1
