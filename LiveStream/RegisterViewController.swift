@@ -34,19 +34,28 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         FIRAuth.auth()?.createUser(withEmail: emailText.text!,password: passwordText.text!) { (user, error) in
             
             if let user = FIRAuth.auth()?.currentUser{
-            let changeRequest = user.profileChangeRequest()
-            changeRequest.displayName = self.nameText.text
+                let changeRequest = user.profileChangeRequest()
+                changeRequest.displayName = self.nameText.text
             }
             
             if error == nil {
+
                 print("Success")
 
                 UserDefaults.standard.set(true, forKey: "firstUse")
+
+                let userid = FIRAuth.auth()?.currentUser?.uid
+                let userinfo = ["email": self.emailText.text!, "userName": self.nameText.text!]
                 
+                DataService.dataService.createNewAccount(uid: userid!, user: userinfo)
+                
+
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "start")
                 
                 
                 self.present(vc!, animated: true, completion: nil)
+                
+                
                 
             } else {
                 let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -79,12 +88,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
     }
     
     
-    
-
-    
-
-    
-    
     func dismissKeyboard() {
         view.endEditing(true)
         UIView.animate(withDuration: 0.05, animations: {
@@ -93,12 +96,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
             self.nextButton.frame = frame
         })
     }
-    
-    
-        
-    
-
-
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.1, animations: {

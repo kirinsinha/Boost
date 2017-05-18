@@ -11,12 +11,14 @@ import FirebaseAuth
 import FirebaseDatabase
 import Firebase
 import AVFoundation
+import Alamofire
 
 class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegate, PopupViewControllerDelegate {
     
     // Firebase
     
-    var user: FIRUser?
+    var user: FIRUser? //Auth obj
+    var u: User? //Database obj
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle!
     var streamTitleText: String?
@@ -121,9 +123,18 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        user = FIRAuth.auth()?.currentUser
-        ref = FIRDatabase.database().reference()
-        startObservingDatabase()
+        self.user = FIRAuth.auth()?.currentUser
+        
+        //set current user database object
+        
+        DataService.dataService.CURRENT_USER_REF.observeSingleEvent(of: .value, with: { snapshot in
+            
+            self.u = User(snap: snapshot, userId: (self.user?.uid)!)
+            
+            print(self.u?.username ?? "no current user set")
+            
+        })
+        
         
         //progress.transform = progress.transform.scaledBy(x: 1, y: 2)
         // Do any additional setup after loading the view, typically from a nib.
@@ -266,14 +277,54 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
         broadcastButton.removeTarget(nil, action: nil, for: UIControlEvents.touchUpInside)
         broadcastButton.addTarget(bambuserView, action: #selector(bambuserView.stopBroadcasting), for: UIControlEvents.touchUpInside)
         
-        // making a video, getting an automatic unique 'child ID' and putting that as the customDad for the video. Then send the video data to firebase
-        
-        //let currentVideo = Video(dbref: ref, user: user, streamTitle: streamTitleText)
-        //bambuserView.customData = currentVideo.videoID
-        //bambuserView.startBroadcasting()
-        //currentVideo.sendToFirebase()
+        bambuserView.startBroadcasting()
         
     }
+    
+    //called when server creates unique string. get metadata from the server based on 
+    //id and then save to database
+    
+    func broadcastIdReceived(_ broadcastId: String!) {
+        requestVideoMetadataAndCreate(broadcastId: broadcastId)
+    }
+    
+    func requestVideoMetadataAndCreate(broadcastId: String!) {
+        
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization" :"Bearer d8vz5aqnewxk7i193gbze5dc3", //change api key here
+            "Accept" : "application/vnd.bambuser.v1+json"
+        ]
+        
+        
+        Alamofire.request("https://api.irisplatform.io/broadcasts/" + broadcastId, headers: headers).responseJSON { response in
+            debugPrint(response)
+            if let result = response.result.value {
+                let json = result as! NSDictionary
+                let id = json["id"]!
+                if id as? String != broadcastId {print("strange times")}
+                var videoInfo = [:] as Dictionary<String, Any>
+                videoInfo["url"] = json["resourceUri"]!
+                videoInfo["videoTitle"] = self.streamLabel.text
+                videoInfo["boostNum"] = 0
+                videoInfo["boostGoal"] = self.goal
+                videoInfo["creatorId"] = self.u?.userId
+                videoInfo["creatorName"] = self.u?.username
+                videoInfo["liveStatus"] = true
+                DataService.dataService.createNewVideo(videoID: broadcastId, videoInfo: videoInfo)
+                
+                DataService.dataService.CURRENT_USER_REF.observeSingleEvent(of: .value, with: { snapshot in
+                
+                    let u = User(snap: snapshot, userId: (self.user?.uid)!)
+                    
+                    print(u.username)
+                    u.createDeleteVideo(videoId: broadcastId, create: true)
+                
+                })
+            }
+        }
+    }
+    
     
     func broadcastStarted() {
         NSLog("Received broadcastStarted signal")
@@ -296,13 +347,6 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
         liveLabel.textColor = UIColor.green
         broadcastButton.removeTarget(nil, action: nil, for: UIControlEvents.touchUpInside)
         broadcastButton.addTarget(self, action: #selector(ViewController.broadcast), for: UIControlEvents.touchUpInside)
-    }
-    
- 
-    func startObservingDatabase () {
-        databaseHandle = ref?.childByAutoId().observe(.value, with: { (snapshot) in
-            
-        })
     }
     
 

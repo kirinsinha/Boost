@@ -36,9 +36,13 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     @IBOutlet weak var backgroundBar: UILabel!
     
     
-    var index = 0
+    var cvidx = 0
     var fractionProgress = 0.0
     var goal = 0.0
+    
+    var user: FIRUser? //Auth obj
+    var u: User! //current user holder Database obj
+    var videos = [Video]()
     
     var challenges = ["Dog attacks doll", "Eating 10 hot dogs 🌭🍴💪", "Giving flowers to a stranger 😇💐"]
     
@@ -72,45 +76,6 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     }
     
     
-
-    
-    func removeInstruction(_ sender: UIButton) {
-        
-        if first == true {
-            topView.removeFromSuperview()
-            first = false
-        }
-        
-    }
-    
-    
-    func boostAction(_ sender: UIButton) {
-        
-        initBoosts[index % arrayLen] += 1
-        boostNumber.text = String(initBoosts[index % arrayLen])
-        
-        
-        let boost = Double(boostNumber.text!)!
-        goal = Double(goalNumber.text!)!
-        fractionProgress = boost / goal
-
-        
-        if(boost<=goal){
-            let height = CGFloat(fractionProgress)*backgroundBar.bounds.size.height
-            progressBar.frame = CGRect(x: backgroundBar.frame.minX, y: backgroundBar.frame.maxY - height, width: backgroundBar.bounds.size.width, height: height)
-            gradient.removeFromSuperlayer()
-            createGradient()
-        }
-        
-        UIView.animate(withDuration: 1, animations: {
-            self.indicatorLabel.alpha = 1
-        })
-        
-        UIView.animate(withDuration: 1, animations: {
-            self.indicatorLabel.alpha = 0
-        })
- 
-    }
     
     func createGradient() {
         gradient = CAGradientLayer()
@@ -151,60 +116,50 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        let pastIndex = cvidx
         if gesture.direction == UISwipeGestureRecognizerDirection.up {
-            index -= 1
+            cvidx -= 1
             
-            if(index < 0){
-                index = index + arrayLen
+            if(cvidx < 0){
+                cvidx = cvidx + videos.count
             }
+        } else if gesture.direction == UISwipeGestureRecognizerDirection.down {
+            cvidx += 1
         }
         
-
-            
-        
-        else if gesture.direction == UISwipeGestureRecognizerDirection.down {
-            index += 1
-
+        //update previous video
+        if pastIndex != cvidx {
+            videos[pastIndex % videos.count].addRemoveViewers(add: false)
         }
         
-        boostNumber.text = String(initBoosts[index % arrayLen])
-        viewerCount.text = String(viewers[index % arrayLen])
-        nameLabel.text = people[index % arrayLen]
-        streamLabel.text = challenges[index % arrayLen]
-        avatarImage.image = avatars[index % arrayLen]
-        goalNumber.text = String(goalBoosts[index % arrayLen])
-        
-        gradient.removeFromSuperlayer()
-        
-        
-        let boost = Double(boostNumber.text!)!
-        goal = Double(goalNumber.text!)!
-        fractionProgress = boost / goal
-        
-        
-        if(boost<=goal){
-            let height = CGFloat(fractionProgress)*backgroundBar.bounds.size.height
-            progressBar.frame = CGRect(x: backgroundBar.frame.minX, y: backgroundBar.frame.maxY - height, width: backgroundBar.bounds.size.width, height: height)
-            
-            createGradient()
-
-    }
- 
- 
+        //update the new current video
+        videos[cvidx % videos.count].addRemoveViewers(add: true)
     
+        //draw the new current video
+        renderPlayerForCurrentVideo()
     }
     
 
     
     
+    func boostAction(_ sender: UIButton) {
+        
+        let videoId = videos[cvidx % videos.count].videoID
+        u.addUndoBoost(videoId: videoId, boost: true)
+        videos[cvidx % videos.count].addBoost()
+        boostNumber.text = String(videos[cvidx % videos.count].boostNum)
+    
+        renderBoostBarUpdate()
+        
+    }
 
+    
     
     override func viewDidLoad() {
         
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
- 
         super.viewDidLoad()
         
+
         //intro if register was first view controller: 
         let isFirstTime = UserDefaults.standard.bool(forKey: "firstUse")
         
@@ -216,6 +171,97 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
         }
         
         print(prevRegister)
+
+        
+        //Make sure the super actually grabs the real current user
+        if self.u == nil {
+            self.user = FIRAuth.auth()?.currentUser
+            
+            //set current user database object
+            
+            DataService.dataService.CURRENT_USER_REF.observeSingleEvent(of: .value, with: { snapshot in
+                
+                self.u = User(snap: snapshot, userId: (self.user?.uid)!)
+                
+                print(self.u?.username ?? "no current user set")
+                
+            })
+        }
+        
+        //Listen to the list of videos, grab them and store them in the video list. Don't be smart about ordering for now.
+        
+        DataService.dataService.VIDEO_REF.observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.value)
+            self.videos = []
+            
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshots {
+                    //create our array of videos
+                    if let videoInfo = snap.value as? Dictionary<String, AnyObject> {
+                        let id = snap.key
+                        let vid = Video(videoID: id, videoInfo: videoInfo)
+                        
+                        //inserts videos newest joke first, likely have to update for sorting
+                        self.videos.insert(vid, at:0)
+                    }
+                }
+            }
+            
+            if self.videos.count == 0 {
+                //display no video warning
+                
+            } else {
+                self.renderPlayerForCurrentVideo()
+            }
+            
+        })
+        
+        //add a listener for new videos
+        
+        DataService.dataService.VIDEO_REF.observe(.childAdded, with: { (snapshot) -> Void in
+            if let videoInfo = snapshot.value as? Dictionary<String, AnyObject> {
+                let id = snapshot.key
+                let vid = Video(videoID: id, videoInfo: videoInfo)
+                
+                self.videos.append(vid)
+            }
+            
+        })
+        
+        //add a listener for new updates to videos. If it's the current video, update your UI. If its a video in the queue
+        //update the storage object
+        
+        DataService.dataService.VIDEO_REF.observe(.childChanged, with: { (snapshot) in
+            let videoId = snapshot.ref.key
+            //understand if its the current video or not to have different behavior
+            var i = 0
+            var idx = 0
+            for video in self.videos {
+                if video.videoID == videoId {
+                    idx = i
+                }
+                i += 1
+            }
+            var currentVideoUpdate = false
+            if idx == self.cvidx {currentVideoUpdate = true}
+            
+            let childName = snapshot.key
+            if childName == "boostNum" {
+                self.videos[idx].setBoost(num: snapshot.value as! Int)
+            }
+            if childName == "currentViewers" {
+                self.videos[idx].setViewers(num: snapshot.value as! Int)
+            }
+            if childName == "liveStatus" {
+                self.videos[idx].setLiveStatus(status: snapshot.value as! Bool)
+            }
+            
+            if currentVideoUpdate {
+                self.renderPlayerForCurrentVideo()
+            }
+        })
+        
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeUp.direction = .up
@@ -238,32 +284,39 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
             topView.removeFromSuperview()
         }
         
-        arrayLen = initBoosts.count
-        boostNumber.text = String(initBoosts[index % arrayLen])
-        viewerCount.text = String(viewers[index % arrayLen])
-        nameLabel.text = people[index % arrayLen]
-        streamLabel.text = challenges[index % arrayLen]
-        avatarImage.image = avatars[index % arrayLen]
-        goalNumber.text = String(goalBoosts[index % arrayLen])
+        let menu = UIButton(frame: CGRect(x: 20, y: 35, width: 25, height: 25))
+        menu.setImage(#imageLiteral(resourceName: "menu"), for: UIControlState.normal)
         
+        menu.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        self.view.addSubview(menu)
+ 
+    }
+    
+    func renderPlayerForCurrentVideo() {
+        let currentVideo = videos[cvidx % videos.count]
+        boostNumber.text = String(currentVideo.boostNum)
+        viewerCount.text = String(currentVideo.currentViewers)
+        goalNumber.text = String(currentVideo.boostGoal)
+        nameLabel.text = currentVideo.username
+        streamLabel.text = currentVideo.videoTitle
+    
+        //avatarImage.image = avatars[cvidx % 3]
         
         let playerFrame = CGRect(x: 0, y: 150, width: self.view.frame.size.width, height: self.view.frame.size.height * 0.5)
         bambuserPlayer.frame = playerFrame
         
         bambuserPlayer.delegate = self
         bambuserPlayer.applicationId = "Do14yFBjvRaFc8ut0Ri6LA"
-        bambuserPlayer.playVideo("https://cdn.bambuser.net/broadcasts/ec968ec1-2fd9-f8f3-4f0a-d8e19dccd739?da_signature_method=HMAC-SHA256&da_id=432cebc3-4fde-5cbb-e82f-88b013140ebe&da_timestamp=1456740399&da_static=1&da_ttl=0&da_signature=8e0f9b98397c53e58f9d06d362e1de3cb6b69494e5d0e441307dfc9f854a2479")
+
         
-        // Adding identifier and removing user interaction
-        
-        bambuserPlayer.restorationIdentifier = "bambuserWatchView"
-        bambuserPlayer.isUserInteractionEnabled = false
+        bambuserPlayer.playVideo(currentVideo.irisURL)
+
         
         self.view.addSubview(bambuserPlayer)
         
         
         self.view.sendSubview(toBack: bambuserPlayer)
-
+        
         playButton.setTitle("Play", for: UIControlState.normal)
         playButton.addTarget(bambuserPlayer, action: #selector(BambuserPlayer.playVideo as (BambuserPlayer) -> () -> Void), for: UIControlEvents.touchUpInside)
         self.view.addSubview(playButton)
@@ -274,19 +327,6 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
         //rewindButton.addTarget(self, action: #selector(ViewController.rewind), for: UIControlEvents.touchUpInside)
         self.view.addSubview(rewindButton)
         
-        
-
-        //to interact with side view controlle
-        
-        
-        let menu = UIButton(frame: CGRect(x: 20, y: 35, width: 25, height: 25))
-        menu.setImage(#imageLiteral(resourceName: "menu"), for: UIControlState.normal)
-        
-        menu.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
-        self.view.addSubview(menu)
-        
-
-        
         let boost = Double(boostNumber.text!)!
         goal = Double(goalNumber.text!)!
         fractionProgress = boost / goal
@@ -296,17 +336,34 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
             let height = CGFloat(fractionProgress)*backgroundBar.bounds.size.height
             progressBar.frame = CGRect(x: backgroundBar.frame.minX, y: backgroundBar.frame.maxY - height, width: backgroundBar.bounds.size.width, height: height)
             createGradient()
-
+            
             
         }
         
         indicatorLabel.backgroundColor = yellow
- 
+    }
 
+    func renderBoostBarUpdate() {
+        let boost = Double(boostNumber.text!)!
+        goal = Double(goalNumber.text!)!
+        fractionProgress = boost / goal
         
- 
+        
+        if(boost<=goal){
+            let height = CGFloat(fractionProgress)*backgroundBar.bounds.size.height
+            progressBar.frame = CGRect(x: backgroundBar.frame.minX, y: backgroundBar.frame.maxY - height, width: backgroundBar.bounds.size.width, height: height)
+            gradient.removeFromSuperlayer()
+            createGradient()
         }
-
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.indicatorLabel.alpha = 1
+        })
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.indicatorLabel.alpha = 0
+        })
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
