@@ -49,7 +49,7 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     var avatars = [#imageLiteral(resourceName: "avatar"),#imageLiteral(resourceName: "avatar2"),#imageLiteral(resourceName: "avatar3")]
     var viewers = [563, 66, 228]
     var goalBoosts = [50,300,10]
-
+    var prevRegister = false
     
     var arrayLen = 1
     
@@ -59,6 +59,7 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     var rewindButton: UIButton
     var gradient: CAGradientLayer!
     var gradValue = 5
+    var first : Bool?
     
     let yellow = UIColor(red: 255.0/255.0, green: 200.0/255.0, blue: 94.0/255.0, alpha: 1.0)
     
@@ -153,6 +154,19 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
         
         super.viewDidLoad()
         
+        //intro if register was first view controller:
+        let isFirstTime = UserDefaults.standard.bool(forKey: "firstUse")
+        
+        if isFirstTime != true {
+            first = false
+        } else {
+            first = true
+            UserDefaults.standard.set(false, forKey: "firstUse")
+        }
+        
+        print(prevRegister)
+
+        
         //Make sure the super actually grabs the real current user
         if self.u == nil {
             self.user = FIRAuth.auth()?.currentUser
@@ -171,7 +185,7 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
         //Listen to the list of videos, grab them and store them in the video list. Don't be smart about ordering for now.
         
         DataService.dataService.VIDEO_REF.observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.value)
+            
             self.videos = []
             
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {

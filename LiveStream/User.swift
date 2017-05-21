@@ -13,6 +13,7 @@ import Firebase
 class User {
     
     private var _userRef: FIRDatabaseReference!
+    private var _USER_REF = FIRDatabase.database().reference().child("users")
     
     private var _userId: String!
     private var _email = ""
@@ -74,6 +75,8 @@ class User {
     //create a user object from an existing user
     init(snap: FIRDataSnapshot, userId: String) {
         self._userId = userId
+        
+        //FIRAuth.auth()?.currentUser
         
         let userInfo = snap.value as! [String: Any]
         

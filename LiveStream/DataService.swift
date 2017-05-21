@@ -13,9 +13,9 @@ import FirebaseDatabase
 class DataService {
     static let dataService = DataService()
     
-    private var _BASE_REF = FIRDatabase.database().reference()
-    private var _USER_REF = FIRDatabase.database().reference().child("users")
-    private var _VIDEO_REF = FIRDatabase.database().reference().child("videos")
+    var _BASE_REF = FIRDatabase.database().reference()
+    var _USER_REF = FIRDatabase.database().reference().child("users")
+    var _VIDEO_REF = FIRDatabase.database().reference().child("videos")
     
     var BASE_REF: FIRDatabaseReference {
         return _BASE_REF
