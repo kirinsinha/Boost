@@ -125,8 +125,12 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         let pastIndex = cvidx
+        
+        FIRAnalytics.logEvent(withName: "swiped", parameters: nil)
+        
         if gesture.direction == UISwipeGestureRecognizerDirection.up {
             cvidx -= 1
+            
             
             if(cvidx < 0){
                 cvidx = cvidx + videos.count
@@ -167,6 +171,9 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        FIRAnalytics.logEvent(withName: "WatchControllerStarted", parameters: nil)
+
         
         //intro if register was first view controller:
         let isFirstTime = UserDefaults.standard.bool(forKey: "firstUse")

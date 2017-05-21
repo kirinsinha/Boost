@@ -136,6 +136,9 @@ class AccountViewController: UIViewController{
     override func viewDidLoad() {
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         super.viewDidLoad()
+        
+        FIRAnalytics.logEvent(withName: "AccountControllerStarted", parameters: nil)
+
         //tenBoosts.alpha = 0.0
         //fiftyBoosts.alpha = 0.0
         //hundredBoosts.alpha = 0.0

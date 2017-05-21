@@ -123,6 +123,8 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        FIRAnalytics.logEvent(withName: "GoLiveControllerStarted", parameters: nil)
+        
         self.user = FIRAuth.auth()?.currentUser
         
         //set current user database object
