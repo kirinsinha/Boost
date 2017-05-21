@@ -1,17 +1,3 @@
-//
-//  AccountViewController.swift
-//  LiveStream
-//
-//  Created by Kirin Sinha Prior on 5/1/17.
-//  Copyright © 2017 com.continuum. All rights reserved.
-//
-
-import UIKit
-import Firebase
-import FirebaseAuth
-import StoreKit
-
-//, SKProductsRequestDelegate,SKPaymentTransactionObserver
 
 
 //
@@ -66,6 +52,9 @@ class AccountViewController: UIViewController{
      */
     
     
+    
+    
+    
 
     @IBAction func getMore(_ sender: UIButton) {
         let actionSheet = UIAlertController(title: "", message: "Boost Up", preferredStyle: UIAlertControllerStyle.actionSheet)
@@ -78,6 +67,7 @@ class AccountViewController: UIViewController{
         //facebook action using social frameworks
         let fifty = UIAlertAction(title: "50 Boosts", style: UIAlertActionStyle.default) { (action) -> Void in
             self.addFifty()
+            
         }
         
         //more button lets you access the Activity View Controller and remove the fb and twitter options
@@ -89,6 +79,8 @@ class AccountViewController: UIViewController{
         let close = UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel) { (action) -> Void in
         }
         
+        
+        
         //action sheet
         actionSheet.addAction(ten)
         actionSheet.addAction(fifty)
@@ -96,25 +88,30 @@ class AccountViewController: UIViewController{
         actionSheet.addAction(close)
         present(actionSheet, animated: true, completion: nil)
         
+        FIRAnalytics.logEvent(withName: "getBoosts", parameters: nil)
+        
         
     }
     
     func addTen() {
-        print("10")
         addition = 10
         showAlert(message: "Buying 10 boosts for $0.99.                                                                     [Environment: Sandbox]")
+        FIRAnalytics.logEvent(withName: "boostsAdded", parameters: ["amount": 10])
+
     }
     
     func addFifty() {
-        print("50")
         addition = 50
         showAlert(message: "Buying 50 boosts for $4.99.                                                                     [Environment: Sandbox]")
+        FIRAnalytics.logEvent(withName: "boostsAdded", parameters: ["amount": 50])
+
     }
     
    func addHundred() {
-        print("100")
         addition = 100
         showAlert(message: "Buying 100 boosts for $9.99.                                                                     [Environment: Sandbox]")
+        FIRAnalytics.logEvent(withName: "boostsAdded", parameters: ["amount": 100])
+
     }
     
     

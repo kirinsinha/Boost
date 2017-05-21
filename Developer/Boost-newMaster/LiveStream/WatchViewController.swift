@@ -155,6 +155,8 @@ class WatchViewController: UIViewController, BambuserPlayerDelegate {
         u.addUndoBoost(videoId: videoId, boost: true)
         videos[cvidx % videos.count].addBoost()
         boostNumber.text = String(videos[cvidx % videos.count].boostNum)
+        
+        FIRAnalytics.logEvent(withName: "boostAction", parameters: nil)
     
         renderBoostBarUpdate()
         

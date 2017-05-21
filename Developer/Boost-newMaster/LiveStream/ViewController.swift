@@ -280,6 +280,8 @@ class ViewController: UIViewController, BambuserViewDelegate, UITextFieldDelegat
         
         bambuserView.startBroadcasting()
         
+        FIRAnalytics.logEvent(withName: "broadcastStarted", parameters: nil)
+        
     }
     
     //called when server creates unique string. get metadata from the server based on 
